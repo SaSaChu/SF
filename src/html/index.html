@@ -9,6 +9,14 @@
     <title>Sunflower Blue Label</title>
 
     <link rel="stylesheet" href="../css/index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    >
   </head>
 
   <body>
@@ -16,7 +24,7 @@
     <header class="site-header" data-header>
       <div class="site-header__inner">
         <a class="brand" href="#top" aria-label="Sunflower Blue Label 首頁">
-          <img src="images/logo-header.svg" alt="Sunflower Blue Label">
+          <img src="../images/logo-header.svg" alt="Sunflower Blue Label">
         </a>
 
         <button
@@ -80,20 +88,1081 @@
         </a>
       </section>
 
-      <!-- 下一區內容示意 -->
-      <section class="content-section" id="series">
-        <div class="content-section__inner">
-          <p class="content-section__label">
-            BLUE LABEL
-          </p>
 
-          <h2>從日常出發的舒適系列</h2>
+      <!-- 影片放置區 -->
+      <section  class="sfb-film-section" aria-labelledby="sfb-film-title">
+        <div class="sfb-film-section__inner">
+          <h2
+            class="sfb-film-title"
+            id="sfb-film-title"
+          >
+            <span>Define,</span>
+            <span>and Feel Again.</span>
+          </h2>
 
-          <p>
-            此區可接續商品系列、品牌故事或其他首頁內容。
-          </p>
+          <div class="sfb-film-player">
+            <div
+              class="sfb-film-player__ratio"
+              data-sfb-film
+            >
+              <!--
+                請把 VIDEO_ID 換成實際 YouTube 影片 ID。
+
+                例如：
+                https://www.youtube.com/watch?v=abcdefghijk
+
+                VIDEO_ID 就是：
+                abcdefghijk
+              -->
+              <iframe
+                src="https://www.youtube.com/embed/nfEk_VcGQBo?si=A8SM9mXGQCcz4vzO"
+                title="SUNFLOWER BLUE LABEL 品牌影片"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
         </div>
       </section>
+
+
+      <!-- 故事 -->
+      <section  class="sfb-story-section"  data-sfb-story  aria-labelledby="sfb-story-title">
+        <!-- SCSS 格線背景 -->
+        <div
+          class="sfb-story-grid"
+          aria-hidden="true"
+        ></div>
+
+        <div class="sfb-story-section__inner">
+          <div
+            class="sfb-story-visual"
+            data-sfb-story-visual
+          >
+            <img
+              src="../images/story.png"
+              alt="SUNFLOWER BLUE LABEL 藍色包裝設計"
+            >
+          </div>
+
+          <div
+            class="sfb-story-copy"
+            data-sfb-story-copy
+          >
+            <h2
+              class="sfb-story-title"
+              id="sfb-story-title"
+            >
+              重塑生活感受
+            </h2>
+
+            <p class="sfb-story-lead">
+              五十餘年工藝，深入在地日常。
+            </p>
+
+            <p class="sfb-story-description">
+              用卓越的產品，為好生活打底，讓一切都值得重新感受。
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- 特色01 -->
+      <section class="sfb-cotton-section" data-sfb-cotton aria-labelledby="sfb-cotton-title">
+        <div class="sfb-cotton-section__inner">
+
+          <div class="sfb-cotton-media">
+            <img
+              src="../images/feature01.png"
+              alt="Blue Label 高針數純棉布料"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="sfb-cotton-content">
+            <div class="sfb-cotton-content__top">
+
+              <h2
+                class="sfb-cotton-title"
+                id="sfb-cotton-title"
+              >
+                Blue Label獨家研發布科技<br>
+                為舒適設立新標準
+              </h2>
+
+              <div
+                class="sfb-section-line"
+                aria-hidden="true"
+              ></div>
+
+            </div>
+
+            <div class="sfb-cotton-content__bottom">
+
+              <h3 class="sfb-cotton-subtitle">
+                精選高支數、高織數、高針數100%純棉
+              </h3>
+
+              <p class="sfb-cotton-description">
+                高針數細膩工藝打造5倍柔軟極致觸感，全方位高透氣、
+                高親膚、高彈性的自在體驗，讓基本款不止於基本。
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- 特色02 -->
+      <section class="sfb-reflex-section" data-sfb-reflex aria-labelledby="sfb-reflex-title">
+        <div class="sfb-reflex-sticky">
+
+          <div class="sfb-reflex-layout">
+
+            <!-- 左側／手機上方圖片 -->
+            <div class="sfb-reflex-media">
+
+              <figure
+                class="sfb-reflex-slide is-active"
+                data-sfb-reflex-slide="0"
+              >
+                <img
+                  src="../images/f01.webp"
+                  alt="Re-Flex 高透氣布料"
+                  loading="lazy"
+                >
+              </figure>
+
+              <figure
+                class="sfb-reflex-slide"
+                data-sfb-reflex-slide="1"
+                aria-hidden="true"
+              >
+                <img
+                  src="../images/f02.webp"
+                  alt="Re-Flex 高親膚布料"
+                  loading="lazy"
+                >
+              </figure>
+
+              <figure
+                class="sfb-reflex-slide"
+                data-sfb-reflex-slide="2"
+                aria-hidden="true"
+              >
+                <img
+                  src="../images/f03.jpg"
+                  alt="Re-Flex 高彈性布料"
+                  loading="lazy"
+                >
+              </figure>
+
+            </div>
+
+            <!-- 右側／手機下方內容 -->
+            <div class="sfb-reflex-content">
+
+              <div class="sfb-reflex-heading">
+
+                <h2
+                  class="sfb-reflex-title"
+                  id="sfb-reflex-title"
+                >
+                  <span class="sfb-reflex-title__en">
+                    Re-Flex<sup>™</sup>
+                  </span>
+
+                  <span class="sfb-reflex-title__zh">
+                    棉質科技
+                  </span>
+                </h2>
+
+                <div
+                  class="sfb-section-line"
+                  aria-hidden="true"
+                ></div>
+
+              </div>
+
+              <ol class="sfb-reflex-list">
+
+                <!-- 01 高透氣 -->
+                <li
+                  class="sfb-reflex-item is-active"
+                  data-sfb-reflex-item="0"
+                >
+                  <button
+                    class="sfb-reflex-item__button"
+                    type="button"
+                    aria-current="step"
+                  >
+                    <span
+                      class="sfb-reflex-item__icon"
+                      aria-hidden="true"
+                    >
+                      <img
+                        class="sfb-reflex-item__icon-default"
+                        src="../images/Sunflower-2.svg"
+                        alt=""
+                      >
+
+                      <img
+                        class="sfb-reflex-item__icon-active"
+                        src="../images/Sunflower-2-h.svg"
+                        alt=""
+                      >
+                    </span>
+
+                    <span class="sfb-reflex-item__content">
+                      <strong class="sfb-reflex-item__title">
+                        Re-Flex<sup>™</sup> 高透氣
+                      </strong>
+
+                      <span class="sfb-reflex-item__description">
+                        全天擁抱透氣舒適
+                      </span>
+                    </span>
+                  </button>
+                </li>
+
+                <!-- 02 高親膚 -->
+                <li
+                  class="sfb-reflex-item"
+                  data-sfb-reflex-item="1"
+                >
+                  <button
+                    class="sfb-reflex-item__button"
+                    type="button"
+                  >
+                    <span
+                      class="sfb-reflex-item__icon"
+                      aria-hidden="true"
+                    >
+                      <img
+                        class="sfb-reflex-item__icon-default"
+                        src="../images/Sunflower-3.svg"
+                        alt=""
+                      >
+
+                      <img
+                        class="sfb-reflex-item__icon-active"
+                        src="../images/Sunflower-3-h.svg"
+                        alt=""
+                      >
+                    </span>
+
+                    <span class="sfb-reflex-item__content">
+                      <strong class="sfb-reflex-item__title">
+                        Re-Flex<sup>™</sup> 高親膚
+                      </strong>
+
+                      <span class="sfb-reflex-item__description">
+                        溫柔細緻肌膚觸感
+                      </span>
+                    </span>
+                  </button>
+                </li>
+
+                <!-- 03 高彈性 -->
+                <li
+                  class="sfb-reflex-item"
+                  data-sfb-reflex-item="2"
+                >
+                  <button
+                    class="sfb-reflex-item__button"
+                    type="button"
+                  >
+                    <span
+                      class="sfb-reflex-item__icon"
+                      aria-hidden="true"
+                    >
+                      <img
+                        class="sfb-reflex-item__icon-default"
+                        src="../images/Sunflower-4.svg"
+                        alt=""
+                      >
+
+                      <img
+                        class="sfb-reflex-item__icon-active"
+                        src="../images/Sunflower-4-h.svg"
+                        alt=""
+                      >
+                    </span>
+
+                    <span class="sfb-reflex-item__content">
+                      <strong class="sfb-reflex-item__title">
+                        Re-Flex<sup>™</sup> 高彈性
+                      </strong>
+
+                      <span class="sfb-reflex-item__description">
+                        彈性支撐自在活動
+                      </span>
+                    </span>
+                  </button>
+                </li>
+
+              </ol>
+
+              <!-- 手機版目前進度 -->
+              <div
+                class="sfb-reflex-progress"
+                aria-hidden="true"
+              >
+                <span class="sfb-reflex-progress__bar"></span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- Blue Label 極致棉柔系列 -->
+      <section class="sfb-product-series" aria-labelledby="sfb-product-series-title" data-sfb-product-series>
+        <!-- 背景大型移動文字 -->
+        <div
+          class="sfb-product-series__marquee"
+          aria-hidden="true"
+        >
+          <!-- 上層 -->
+          <div
+            class="
+              sfb-product-series__marquee-row
+              sfb-product-series__marquee-row--top
+            "
+          >
+            <div class="sfb-product-series__marquee-track">
+              <span>BLUE LABEL</span>
+              <span>BLUE LABEL</span>
+              <span>BLUE LABEL</span>
+              <span>BLUE LABEL</span>
+            </div>
+          </div>
+
+          <!-- 中層 -->
+          <div
+            class="
+              sfb-product-series__marquee-row
+              sfb-product-series__marquee-row--middle
+            "
+          >
+            <div class="sfb-product-series__marquee-track">
+              <span>BLUE LABEL</span>
+              <span>BLUE LABEL</span>
+              <span>BLUE LABEL</span>
+              <span>BLUE LABEL</span>
+            </div>
+          </div>
+
+          <!-- 下層 -->
+          <div
+            class="
+              sfb-product-series__marquee-row
+              sfb-product-series__marquee-row--bottom
+            "
+          >
+            <div class="sfb-product-series__marquee-track">
+              <span>BLUE LABEL</span>
+              <span>BLUE LABEL</span>
+              <span>BLUE LABEL</span>
+              <span>BLUE LABEL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sfb-product-series__inner">
+
+          <!-- 文字 -->
+          <header class="sfb-product-series__header">
+            <p class="sfb-product-series__eyebrow">
+              Design by Sunflower
+            </p>
+
+            <h2
+              class="sfb-product-series__title"
+              id="sfb-product-series-title"
+            >
+              Blue Label 極致棉柔系列
+            </h2>
+
+            <p class="sfb-product-series__description">
+              深耕台灣五十餘年的三花棉業，專注講究契合生活的棉質工藝。
+              Blue Label延續三花的精神，融合全新Re-Flex™棉質科技並升級經典設計，
+              回應身體真正的需求。極致棉柔的觸感、輕盈透氣的工藝，
+              再定義日常內著的體感標準，全方位支撐工作、運動與居家生活。
+            </p>
+          </header>
+
+          <!-- 商品圖片 -->
+          <div
+            class="sfb-product-series__viewport"
+            data-sfb-product-viewport
+          >
+            <div class="sfb-product-series__grid">
+
+              <!-- 左上 -->
+              <a
+                class="sfb-product-card sfb-product-card--left-top"
+                href="/products/blue-label-t-shirt"
+                aria-label="查看 Blue Label 圓領短袖商品"
+              >
+                <img
+                  src="../images/series04.png"
+                  alt="Blue Label 圓領短袖領口與標誌"
+                  loading="lazy"
+                >
+              </a>
+
+              <!-- 左下 -->
+              <a
+                class="sfb-product-card sfb-product-card--left-bottom"
+                href="/products/blue-label-vest"
+                aria-label="查看 Blue Label 男性背心商品"
+              >
+                <img
+                  src="../images/series05.png"
+                  alt="Blue Label 男性白色背心"
+                  loading="lazy"
+                >
+              </a>
+
+              <!-- 中間主圖 -->
+              <a
+                class="sfb-product-card sfb-product-card--main"
+                href="/products/blue-label-crew-neck"
+                aria-label="查看 Blue Label 男性圓領短袖商品"
+              >
+                <img
+                  src="../images/series01.png"
+                  alt="男性穿著 Blue Label 深藍色圓領短袖"
+                  loading="lazy"
+                >
+              </a>
+
+              <!-- 右上 -->
+              <a
+                class="sfb-product-card sfb-product-card--right-top"
+                href="/products/blue-label-boxer"
+                aria-label="查看 Blue Label 黑色平口褲商品"
+              >
+                <img
+                  src="../images/series02.png"
+                  alt="Blue Label 黑色平口褲"
+                  loading="lazy"
+                >
+              </a>
+
+              <!-- 右下 -->
+              <a
+                class="sfb-product-card sfb-product-card--right-bottom"
+                href="/products/blue-label-plaid-boxer"
+                aria-label="查看 Blue Label 格紋平口褲商品"
+              >
+                <img
+                  src="../images/series03.png"
+                  alt="Blue Label 紅黑格紋平口褲"
+                  loading="lazy"
+                >
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- 升級資訊 -->
+      <section class="sfb-comfort">
+        <div class="sfb-comfort__inner">
+          <h2 class="sfb-comfort__heading">
+            全新升級舒適體驗
+          </h2>
+
+          <!-- Step 1：棉柔升級 -->
+
+          <article
+            class="sfb-comfort-step sfb-comfort-step--step-1"
+            data-sfb-comfort-slider
+            data-autoplay-delay="3000"
+          >
+            <div class="sfb-comfort-step__layout">
+              <!-- 左側文字 -->
+              <div class="sfb-comfort-step__content">
+                <header class="sfb-comfort-step__header">
+                  <span class="sfb-comfort-step__number">
+                    Step.1
+                  </span>
+
+                  <h3 class="sfb-comfort-step__title">
+                    棉柔升級
+                  </h3>
+
+                  <div
+                    class="sfb-comfort-step__progress"
+                    aria-hidden="true"
+                  >
+                    <span
+                      class="sfb-comfort-step__progress-item is-active"
+                      data-sfb-comfort-progress
+                    ></span>
+
+                    <span
+                      class="sfb-comfort-step__progress-item"
+                      data-sfb-comfort-progress
+                    ></span>
+
+                    <span
+                      class="sfb-comfort-step__progress-item"
+                      data-sfb-comfort-progress
+                    ></span>
+                  </div>
+                </header>
+
+                <!-- Step 1 文字輪播 -->
+                <div class="sfb-comfort-step__texts">
+                  <div
+                    class="sfb-comfort-copy is-active"
+                    data-sfb-comfort-copy
+                  >
+                    <h4 class="sfb-comfort-copy__title">
+                      親膚柔軟：
+                    </h4>
+
+                    <p class="sfb-comfort-copy__description">
+                      使用過往只見於頂級衣物的高支數、高織數、
+                      高針數棉料。支數越高，布料則越柔軟；
+                      織數越高，布料則越細密；針數越高，
+                      布料則越細膩。
+                    </p>
+                  </div>
+
+                  <div
+                    class="sfb-comfort-copy"
+                    data-sfb-comfort-copy
+                  >
+                    <h4 class="sfb-comfort-copy__title">
+                      耐洗耐穿：
+                    </h4>
+
+                    <p class="sfb-comfort-copy__description">
+                      嚴選高等級的匹馬棉、長絨棉，質地堅韌，
+                      實現不易起毛球、不易變形、耐洗耐穿的特性，
+                      以穩定陪伴為使命。
+                    </p>
+                  </div>
+
+                  <div
+                    class="sfb-comfort-copy"
+                    data-sfb-comfort-copy
+                  >
+                    <h4 class="sfb-comfort-copy__title">
+                      吸汗透氣：
+                    </h4>
+
+                    <p class="sfb-comfort-copy__description">
+                      所有款式材質皆為100%純棉，
+                      確保肌膚全天候的透氣舒適，
+                      帶來乾爽自在的穿著感受。
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 右側圖片輪播 -->
+              <div class="sfb-comfort-step__media">
+                <div
+                  class="sfb-comfort-image is-active"
+                  data-sfb-comfort-image
+                >
+                  <img
+                    src="../images/up010.png"
+                    alt="深藍色柔軟棉質布料細節"
+                  >
+                </div>
+
+                <div
+                  class="sfb-comfort-image"
+                  data-sfb-comfort-image
+                >
+                  <img
+                    src="../images/up011.png"
+                    alt="耐洗耐穿棉料細節"
+                  >
+                </div>
+
+                <div
+                  class="sfb-comfort-image"
+                  data-sfb-comfort-image
+                >
+                  <img
+                    src="../images/up012.png"
+                    alt="吸汗透氣棉料細節"
+                  >
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Step 2：舒適升級 -->
+
+          <article
+            class="sfb-comfort-step sfb-comfort-step--step-2"
+            data-sfb-comfort-slider
+            data-autoplay-delay="3000"
+          >
+            <div class="sfb-comfort-step__layout">
+              <!-- 左側圖片輪播 -->
+              <div class="sfb-comfort-step__media">
+                <div
+                  class="sfb-comfort-image is-active"
+                  data-sfb-comfort-image
+                >
+                  <img
+                    src="../images/up020.png"
+                    alt="藍標系列四角褲腰頭與布料細節"
+                  >
+                </div>
+
+                <div
+                  class="sfb-comfort-image"
+                  data-sfb-comfort-image
+                >
+                  <img
+                    src="../images/up021.png"
+                    alt="藍標系列鬆緊帶細節"
+                  >
+                </div>
+
+                <div
+                  class="sfb-comfort-image"
+                  data-sfb-comfort-image
+                >
+                  <img
+                    src="../images/up022.png"
+                    alt="藍標系列鈕扣與工藝細節"
+                  >
+                </div>
+              </div>
+
+              <!-- 右側文字 -->
+              <div class="sfb-comfort-step__content">
+                <header class="sfb-comfort-step__header">
+                  <span class="sfb-comfort-step__number">
+                    Step.2
+                  </span>
+
+                  <h3 class="sfb-comfort-step__title">
+                    舒適升級
+                  </h3>
+
+                  <div
+                    class="sfb-comfort-step__progress"
+                    aria-hidden="true"
+                  >
+                    <span
+                      class="sfb-comfort-step__progress-item is-active"
+                      data-sfb-comfort-progress
+                    ></span>
+
+                    <span
+                      class="sfb-comfort-step__progress-item"
+                      data-sfb-comfort-progress
+                    ></span>
+
+                    <span
+                      class="sfb-comfort-step__progress-item"
+                      data-sfb-comfort-progress
+                    ></span>
+                  </div>
+                </header>
+
+                <!-- Step 2 文字輪播 -->
+                <div class="sfb-comfort-step__texts">
+                  <div
+                    class="sfb-comfort-copy is-active"
+                    data-sfb-comfort-copy
+                  >
+                    <h4 class="sfb-comfort-copy__title">
+                      舒適工藝：
+                    </h4>
+
+                    <p class="sfb-comfort-copy__description">
+                      致力讓所有身型感到自在，結合精密工藝與專利剪裁，
+                      賦予日常活動足夠的支撐力與舒適度，
+                      全系列講究最佳穿著體感。
+                    </p>
+                  </div>
+
+                  <div
+                    class="sfb-comfort-copy"
+                    data-sfb-comfort-copy
+                  >
+                    <h4 class="sfb-comfort-copy__title">
+                      鬆緊自在：
+                    </h4>
+
+                    <p class="sfb-comfort-copy__description">
+                      內褲運用特殊材質鬆緊帶，
+                      長期保持不緊勒、不鬆落，
+                      舒適貼合腰部並維持穩定支撐。
+                    </p>
+                  </div>
+
+                  <div
+                    class="sfb-comfort-copy"
+                    data-sfb-comfort-copy
+                  >
+                    <h4 class="sfb-comfort-copy__title">
+                      質感到位：
+                    </h4>
+
+                    <p class="sfb-comfort-copy__description">
+                      從高品質棉料透出的細緻光澤，
+                      到內褲搭配的貝殼紋鈕扣，
+                      觸感與質感並存。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+
+      <!-- 產品區塊 -->
+      <section class="sfb-featured-products" data-sfb-featured-products>
+        <div class="sfb-featured-products__inner">
+          <!-- Header -->
+          <header class="sfb-featured-products__header">
+            <div class="sfb-featured-products__heading-group">
+              <h2 class="sfb-featured-products__title">
+                Blue Label 精選系列
+              </h2>
+
+              <p class="sfb-featured-products__description">
+                用卓越的產品，為好生活打底，
+                讓一切都值得重新感受。
+              </p>
+            </div>
+
+            <a
+              class="sfb-featured-products__view-all"
+              href="#"
+              aria-label="查看全部 Blue Label 商品"
+            >
+              <span>View All</span>
+
+              <svg
+                viewBox="0 0 12 20"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 2L10 10L2 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </header>
+
+          <!-- Product Grid / Mobile Slider -->
+          <div class="sfb-featured-products__viewport">
+            <div class="sfb-featured-products__grid">
+              <!-- Product 1 -->
+              <article
+                class="sfb-featured-product"
+                data-sfb-featured-product
+              >
+                <a
+                  class="sfb-featured-product__link"
+                  href="#"
+                >
+                  <div class="sfb-featured-product__image">
+                    <img
+                      src="../images/featured-product-01.jpg"
+                      alt="極致棉柔內衣"
+                    >
+                  </div>
+
+                  <div class="sfb-featured-product__content">
+                    <h3 class="sfb-featured-product__title">
+                      極致棉柔內衣
+                    </h3>
+
+                    <p class="sfb-featured-product__description">
+                      輕盈透氣的工藝
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  class="sfb-featured-product__button"
+                  href="#"
+                >
+                  立即購買
+                </a>
+              </article>
+
+              <!-- Product 2 -->
+              <article
+                class="sfb-featured-product"
+                data-sfb-featured-product
+              >
+                <a
+                  class="sfb-featured-product__link"
+                  href="#"
+                >
+                  <div class="sfb-featured-product__image">
+                    <img
+                      src="../images/featured-product-02.jpg"
+                      alt="極致棉柔平口褲"
+                    >
+                  </div>
+
+                  <div class="sfb-featured-product__content">
+                    <h3 class="sfb-featured-product__title">
+                      極致棉柔平口褲
+                    </h3>
+
+                    <p class="sfb-featured-product__description">
+                      給生活一件新標準
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  class="sfb-featured-product__button"
+                  href="#"
+                >
+                  立即購買
+                </a>
+              </article>
+
+              <!-- Product 3 -->
+              <article
+                class="sfb-featured-product"
+                data-sfb-featured-product
+              >
+                <a
+                  class="sfb-featured-product__link"
+                  href="#"
+                >
+                  <div class="sfb-featured-product__image">
+                    <img
+                      src="../images/featured-product-03.jpg"
+                      alt="極致棉柔針織平口褲"
+                    >
+                  </div>
+
+                  <div class="sfb-featured-product__content">
+                    <h3 class="sfb-featured-product__title">
+                      極致棉柔針織平口褲
+                    </h3>
+
+                    <p class="sfb-featured-product__description">
+                      極致觸感，舒適本質
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  class="sfb-featured-product__button"
+                  href="#"
+                >
+                  立即購買
+                </a>
+              </article>
+
+              <!-- Product 4 -->
+              <article
+                class="sfb-featured-product"
+                data-sfb-featured-product
+              >
+                <a
+                  class="sfb-featured-product__link"
+                  href="#"
+                >
+                  <div class="sfb-featured-product__image">
+                    <img
+                      src="../images/featured-product-04.jpg"
+                      alt="極致棉柔短袖T恤"
+                    >
+                  </div>
+
+                  <div class="sfb-featured-product__content">
+                    <h3 class="sfb-featured-product__title">
+                      極致棉柔短袖T恤
+                    </h3>
+
+                    <p class="sfb-featured-product__description">
+                      必備升級基本款
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  class="sfb-featured-product__button"
+                  href="#"
+                >
+                  立即購買
+                </a>
+              </article>
+
+              <!-- Product 5 -->
+              <article
+                class="sfb-featured-product"
+                data-sfb-featured-product
+              >
+                <a
+                  class="sfb-featured-product__link"
+                  href="#"
+                >
+                  <div class="sfb-featured-product__image">
+                    <img
+                      src="../images/featured-product-05.jpg"
+                      alt="極致棉柔短褲"
+                    >
+                  </div>
+
+                  <div class="sfb-featured-product__content">
+                    <h3 class="sfb-featured-product__title">
+                      極致棉柔短褲
+                    </h3>
+
+                    <p class="sfb-featured-product__description">
+                      平衡舒適與質感
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  class="sfb-featured-product__button"
+                  href="#"
+                >
+                  立即購買
+                </a>
+              </article>
+
+              <!-- Product 6 -->
+              <article
+                class="sfb-featured-product"
+                data-sfb-featured-product
+              >
+                <a
+                  class="sfb-featured-product__link"
+                  href="#"
+                >
+                  <div class="sfb-featured-product__image">
+                    <img
+                      src="../images/featured-product-06.jpg"
+                      alt="極致棉柔短袖T恤"
+                    >
+                  </div>
+
+                  <div class="sfb-featured-product__content">
+                    <h3 class="sfb-featured-product__title">
+                      極致棉柔短袖T恤
+                    </h3>
+
+                    <p class="sfb-featured-product__description">
+                      設計最百搭的經典服飾
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  class="sfb-featured-product__button"
+                  href="#"
+                >
+                  立即購買
+                </a>
+              </article>
+
+              <!-- Product 7 -->
+              <article
+                class="sfb-featured-product"
+                data-sfb-featured-product
+              >
+                <a
+                  class="sfb-featured-product__link"
+                  href="#"
+                >
+                  <div class="sfb-featured-product__image">
+                    <img
+                      src="../images/featured-product-07.jpg"
+                      alt="極致棉柔平口褲"
+                    >
+                  </div>
+
+                  <div class="sfb-featured-product__content">
+                    <h3 class="sfb-featured-product__title">
+                      極致棉柔平口褲
+                    </h3>
+
+                    <p class="sfb-featured-product__description">
+                      給生活一件新標準
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  class="sfb-featured-product__button"
+                  href="#"
+                >
+                  立即購買
+                </a>
+              </article>
+
+              <!-- Product 8 -->
+              <article
+                class="sfb-featured-product"
+                data-sfb-featured-product
+              >
+                <a
+                  class="sfb-featured-product__link"
+                  href="#"
+                >
+                  <div class="sfb-featured-product__image">
+                    <img
+                      src="../images/featured-product-08.jpg"
+                      alt="極致棉柔內衣"
+                    >
+                  </div>
+
+                  <div class="sfb-featured-product__content">
+                    <h3 class="sfb-featured-product__title">
+                      極致棉柔內衣
+                    </h3>
+
+                    <p class="sfb-featured-product__description">
+                      輕盈透氣的工藝
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  class="sfb-featured-product__button"
+                  href="#"
+                >
+                  立即購買
+                </a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       <!-- 門市資訊 -->
       <section class="sfb-store-section" id="store" data-sfb-store>
@@ -134,7 +1203,7 @@
 
               <div class="sfb-store-visual">
                 <img
-                  src="images/store/store01.png"
+                  src="../images/store/store01.png"
                   alt="SUNFLOWER BLUE LABEL 體驗門市外觀"
                 >
               </div>
@@ -175,7 +1244,7 @@
 
               <div class="sfb-store-visual">
                 <img
-                  src="images/store/store02.png"
+                  src="../images/store/store02.png"
                   alt="SUNFLOWER BLUE LABEL 城市概念門市"
                 >
               </div>
@@ -216,7 +1285,7 @@
 
               <div class="sfb-store-visual">
                 <img
-                  src="images/store/store03.png"
+                  src="../images/store/store03.png"
                   alt="SUNFLOWER BLUE LABEL 生活體驗門市"
                 >
               </div>
@@ -231,6 +1300,9 @@
           ></div>
         </div>
       </section>
+
+
+      
     </main>
 
 
@@ -245,13 +1317,7 @@
             href="#top"
             aria-label="SUNFLOWER BLUE LABEL 首頁"
           >
-            <span class="sfb-footer-brand__main">
-              SUNFLOWER
-            </span>
-
-            <span class="sfb-footer-brand__sub">
-              BLUE LABEL
-            </span>
+            <img src="../images/logo-header.svg">
           </a>
 
           <!-- 關於 -->
@@ -304,7 +1370,7 @@
 
             <ul class="sfb-footer-links">
               <li>
-                <a href="mailto:service@example.com">
+                <a href="mailto:service@example.com" target="_blank">
                   Email
                 </a>
               </li>
@@ -336,7 +1402,7 @@
             </span>
 
             <span>
-              統編|22938620
+              統編&nbsp;|&nbsp;22938620
             </span>
           </div>
         </div>

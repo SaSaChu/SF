@@ -6,7 +6,15 @@ $white: #fff;
 $sfb-store-blue: #087bc5;
 $sfb-store-white: #fff;
 $sfb-store-image-background: #d8e6ed;
-
+$sfb-footer-blue: #087bc5;
+$sfb-footer-logo-blue: #156ca6;
+$sfb-footer-background: #f7f7f7;
+$sfb-footer-border: #acd5ed;
+$sfb-content-blue: #087bc5;
+$sfb-content-white: #fff;
+$sfb-content-text: #303030;
+$sfb-film-background: #fff;
+$sfb-film-placeholder: #3d3d3d;
 
 /* CSS Variables */
 
@@ -21,9 +29,7 @@ $sfb-store-image-background: #d8e6ed;
    */
   --hero-image-opacity: 0.65;
 
-  /*
-   * 由 JavaScript 控制
-   */
+  /* 由 JavaScript 控制 */
   --hero-image-shift: 0px;
   --hero-scroll-fade: 0;
 }
@@ -36,8 +42,26 @@ $sfb-store-image-background: #d8e6ed;
   box-sizing: border-box;
 }
 
+$font-en:
+  "Roboto",
+  Arial,
+  sans-serif;
+
+$font-zh:
+  "Noto Sans TC",
+  "PingFang TC",
+  "Microsoft JhengHei",
+  sans-serif;
+
 html {
   scroll-behavior: smooth;
+  font-family:
+    $font-en,
+    $font-zh,
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
 }
 
 body {
@@ -45,7 +69,8 @@ body {
   color: $text-gray;
   background-color: $white;
   font-family:
-    Arial,
+    $font-en,
+    $font-zh,
     "Noto Sans TC",
     "PingFang TC",
     "Microsoft JhengHei",
@@ -140,6 +165,16 @@ button {
 
   color: $primary-blue;
   line-height: 1;
+
+  img {
+    display: block;
+
+    width: 50%;
+    height: auto;
+    max-height: 100%;
+
+    object-fit: contain;
+  }
 
   &__main {
     font-size: 17px;
@@ -614,6 +649,10 @@ button {
 
   .brand {
     align-items: flex-start;
+    
+    img {
+      width: 40%;
+    }
 
     &__main {
       font-size: 15px;
@@ -835,20 +874,9 @@ button {
 
 
 
-
 /* ========= 以下是footer+store ========= */
-/* ==================================================
-   Store
-   Prefix：sfb-store-
-================================================== */
-
-$sfb-store-blue: #087bc5;
-$sfb-store-white: #fff;
-$sfb-store-image-background: #d8e6ed;
-
-/* ==================================================
-   Store Section
-================================================== */
+/* ========= 以下是footer+store ========= */
+/* Store Section */
 
 .sfb-store-section {
   position: relative;
@@ -876,9 +904,7 @@ $sfb-store-image-background: #d8e6ed;
   }
 }
 
-/* ==================================================
-   Store Main Container
-================================================== */
+/* Store Main Container */
 
 .sfb-store-sticky {
   position: relative;
@@ -907,9 +933,7 @@ $sfb-store-image-background: #d8e6ed;
   overflow: hidden;
 }
 
-/* ==================================================
-   Store Slide
-================================================== */
+/* Store Slide */
 
 .sfb-store-slide {
   position: absolute;
@@ -965,9 +989,7 @@ $sfb-store-image-background: #d8e6ed;
   }
 }
 
-/* ==================================================
-   Store Left Content
-================================================== */
+/* Store Left Content */
 
 .sfb-store-copy {
   position: relative;
@@ -1042,9 +1064,7 @@ $sfb-store-image-background: #d8e6ed;
   line-height: 1.7;
 }
 
-/* ==================================================
-   Store Image
-================================================== */
+/* Store Image */
 
 .sfb-store-visual {
   position: relative;
@@ -1093,18 +1113,13 @@ $sfb-store-image-background: #d8e6ed;
   }
 }
 
-/* ==================================================
-   Store Pagination
-   Desktop 隱藏
-================================================== */
+/* Store Pagination Desktop 隱藏 */
 
 .sfb-store-pagination {
   display: none;
 }
 
-/* ==================================================
-   Desktop Short Height
-================================================== */
+/* Desktop Short Height */
 
 @media (min-width: 768px) and (max-height: 700px) {
   .sfb-store-section {
@@ -1135,9 +1150,7 @@ $sfb-store-image-background: #d8e6ed;
   }
 }
 
-/* ==================================================
-   Tablet Store
-================================================== */
+/* Tablet Store */
 
 @media (max-width: 991px) and (min-width: 768px) {
   .sfb-store-copy {
@@ -1156,9 +1169,7 @@ $sfb-store-image-background: #d8e6ed;
   }
 }
 
-/* ==================================================
-   Mobile Store
-================================================== */
+/* Mobile Store */
 
 @media (max-width: 767px) {
   .sfb-store-section {
@@ -1315,9 +1326,7 @@ $sfb-store-image-background: #d8e6ed;
   }
 }
 
-/* ==================================================
-   Small Mobile Store
-================================================== */
+/* Small Mobile Store */
 
 @media (max-width: 374px) {
   .sfb-store-copy {
@@ -1335,19 +1344,7 @@ $sfb-store-image-background: #d8e6ed;
   }
 }
 
-/* ==================================================
-   Footer
-   Prefix：sfb-footer-
-================================================== */
-
-$sfb-footer-blue: #087bc5;
-$sfb-footer-logo-blue: #156ca6;
-$sfb-footer-background: #f7f7f7;
-$sfb-footer-border: #acd5ed;
-
-/* ==================================================
-   Footer Root
-================================================== */
+/* Footer Root */
 
 .sfb-footer {
   position: relative;
@@ -1362,9 +1359,7 @@ $sfb-footer-border: #acd5ed;
   background-color: $sfb-footer-background;
 }
 
-/* ==================================================
-   Footer Main
-================================================== */
+/* Footer Main */
 
 .sfb-footer-main {
   min-height: 310px;
@@ -1386,41 +1381,32 @@ $sfb-footer-border: #acd5ed;
   }
 }
 
-/* ==================================================
-   Footer Logo
-================================================== */
+/* Footer Logo */
 
 .sfb-footer-brand {
   display: inline-flex;
-
   align-self: start;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   justify-self: start;
 
-  color: $sfb-footer-logo-blue;
+  width: 230px;
+  height: auto;
 
-  line-height: 1;
+  line-height: 0;
   text-decoration: none;
 
-  &__main {
-    font-size: 39px;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-  }
+  img {
+    display: block;
 
-  &__sub {
-    margin-top: 3px;
+    width: 100%;
+    height: auto;
 
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: 0.02em;
+    object-fit: contain;
   }
 }
 
-/* ==================================================
-   Footer Groups
-================================================== */
+/* Footer Groups */
 
 .sfb-footer-group {
   min-width: 0;
@@ -1461,9 +1447,7 @@ $sfb-footer-border: #acd5ed;
   }
 }
 
-/* ==================================================
-   Footer Bottom
-================================================== */
+/* Footer Bottom */
 
 .sfb-footer-bottom {
   margin: 0;
@@ -1517,9 +1501,7 @@ $sfb-footer-border: #acd5ed;
   white-space: nowrap;
 }
 
-/* ==================================================
-   Tablet Footer
-================================================== */
+/* Tablet Footer */
 
 @media (max-width: 991px) and (min-width: 768px) {
   .sfb-footer-main {
@@ -1536,13 +1518,7 @@ $sfb-footer-border: #acd5ed;
   }
 
   .sfb-footer-brand {
-    &__main {
-      font-size: 29px;
-    }
-
-    &__sub {
-      font-size: 12px;
-    }
+    width: 190px;
   }
 
   .sfb-footer-bottom {
@@ -1552,9 +1528,7 @@ $sfb-footer-border: #acd5ed;
   }
 }
 
-/* ==================================================
-   Mobile Footer
-================================================== */
+/* Mobile Footer */
 
 @media (max-width: 767px) {
   .sfb-footer-main {
@@ -1578,15 +1552,9 @@ $sfb-footer-border: #acd5ed;
     align-items: center;
     justify-self: center;
 
+    width: 185px;
+
     margin-top: 20px;
-
-    &__main {
-      font-size: 29px;
-    }
-
-    &__sub {
-      font-size: 13px;
-    }
   }
 
   .sfb-footer-group {
@@ -1646,11 +1614,13 @@ $sfb-footer-border: #acd5ed;
   }
 }
 
-/* ==================================================
-   Small Mobile Footer
-================================================== */
+/* Small Mobile Footer */
 
 @media (max-width: 374px) {
+  .sfb-footer-brand {
+    width: 165px;
+  }
+
   .sfb-footer-main {
     padding-right: 25px;
     padding-left: 25px;
@@ -1670,32 +1640,3530 @@ $sfb-footer-border: #acd5ed;
     font-size: 11px;
   }
 }
+/* ========= 以上是footer+store ========= */
+/* ========= 以上是footer+store ========= */
 
-/* ==================================================
-   Store + Footer Connection
-================================================== */
 
-.sfb-store-section + .sfb-footer {
-  margin-top: 0;
+
+
+
+/* ========= 以下是影片＋故事 ========= */
+/* ========= 以下是影片＋故事 ========= */
+/* Film Layout */
+
+.sfb-film-section {
+  position: relative;
+
+  width: 100%;
+  margin: 0;
+
+  padding:
+    clamp(72px, 8vw, 118px)
+    24px
+    clamp(96px, 10vw, 142px);
+
+  overflow: hidden;
+
+  background-color: $sfb-film-background;
+
+  &__inner {
+    width: min(100%, 960px);
+    margin: 0 auto;
+  }
 }
 
-main {
-  margin-bottom: 0;
-  padding-bottom: 0;
+
+/* Film Title */
+
+.sfb-film-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 0 34px;
+
+  color: $sfb-content-blue;
+
+  font-size: clamp(40px, 4.5vw, 62px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  text-align: center;
+
+  span {
+    display: block;
+  }
 }
 
-main > .sfb-store-section:last-child {
-  margin-bottom: 0;
+
+/* Responsive YouTube Player */
+
+.sfb-film-player {
+  position: relative;
+
+  width: min(100%, 820px);
+  margin: 0 auto;
+
+  line-height: 0;
+
+  box-shadow:
+    0 12px 22px rgba(0, 0, 0, 0.18),
+    0 2px 5px rgba(0, 0, 0, 0.08);
+
+  &__ratio {
+    position: relative;
+
+    width: 100%;
+
+    /*
+     * YouTube 標準比例。
+     */
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    background-color: $sfb-film-placeholder;
+
+    iframe {
+      position: absolute;
+      inset: 0;
+
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      border: 0;
+    }
+  }
 }
 
-/* ==================================================
-   Reduced Motion
-================================================== */
+
+/* 不支援 aspect-ratio 的舊瀏覽器備用。 */
+
+@supports not (aspect-ratio: 16 / 9) {
+  .sfb-film-player {
+    &__ratio {
+      height: 0;
+      padding-bottom: 56.25%;
+
+      iframe {
+        position: absolute;
+      }
+    }
+  }
+}
+
+
+/* Story Section Prefix：sfb-story- */
+
+$sfb-story-background: #e8f6fd;
+$sfb-story-grid-color: rgba(58, 151, 205, 0.2);
+$sfb-story-blue: #087bc5;
+$sfb-story-text: #303030;
+
+
+/* Story Layout */
+
+.sfb-story-section {
+  position: relative;
+
+  width: 100%;
+  min-height: 650px;
+
+  margin: 0;
+
+  padding:
+    clamp(92px, 10vw, 138px)
+    32px;
+
+  overflow: hidden;
+
+  background-color: $sfb-story-background;
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 0.93fr);
+
+    align-items: center;
+
+    gap: clamp(58px, 7vw, 104px);
+
+    width: min(100%, 1160px);
+    margin: 0 auto;
+  }
+
+  /*
+   * 中央淡淡的白色亮度，
+   * 避免格線背景太生硬。
+   */
+  &::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+
+    content: "";
+
+    background:
+      radial-gradient(
+        circle at 50% 45%,
+        rgba(255, 255, 255, 0.3) 0,
+        rgba(255, 255, 255, 0.1) 42%,
+        rgba(255, 255, 255, 0) 75%
+      );
+
+    pointer-events: none;
+  }
+}
+
+
+/*  Story Grid Background */
+
+.sfb-story-grid {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+
+  /*
+   * 第一層畫垂直線，
+   * 第二層畫水平線。
+   */
+  background-image:
+    linear-gradient(
+      to right,
+      $sfb-story-grid-color 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      $sfb-story-grid-color 1px,
+      transparent 1px
+    );
+
+  background-size: 66px 66px;
+  background-position: 0 0;
+
+  pointer-events: none;
+}
+
+
+/* Story Image */
+
+.sfb-story-visual {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  /*
+   * 初始隱藏。
+   * JS 加上 is-visible 後淡入。
+   */
+  opacity: 0;
+
+  transform: translate3d(0, 34px, 0);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change:
+    opacity,
+    transform;
+
+  img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    /*
+     * 接近設計稿中的圖片比例。
+     */
+    aspect-ratio: 1.23 / 1;
+
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+
+/* Story Copy */
+
+.sfb-story-copy {
+  position: relative;
+
+  /*
+   * 文字比圖片晚一點出現。
+   */
+  opacity: 0;
+
+  transform: translate3d(0, 28px, 0);
+
+  transition:
+    opacity 0.75s ease 0.28s,
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.28s;
+
+  will-change:
+    opacity,
+    transform;
+}
+
+
+/* Story Visible State */
+
+.sfb-story-section.is-visible {
+  .sfb-story-visual {
+    opacity: 1;
+
+    transform: translate3d(0, 0, 0);
+  }
+
+  .sfb-story-copy {
+    opacity: 1;
+
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+/* Story Text */
+
+.sfb-story-title {
+  margin: 0 0 24px;
+
+  color: $sfb-story-blue;
+
+  font-size: clamp(45px, 4.5vw, 66px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+}
+
+.sfb-story-lead {
+  margin: 0 0 21px;
+
+  color: $sfb-story-blue;
+
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.7;
+}
+
+.sfb-story-description {
+  max-width: 420px;
+  margin: 0;
+
+  color: $sfb-story-text;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* Tablet */
+
+@media (max-width: 991px) and (min-width: 768px) {
+  /* Film */
+
+  .sfb-film-section {
+    padding:
+      72px
+      42px
+      90px;
+  }
+
+  .sfb-film-title {
+    margin-bottom: 30px;
+
+    font-size: clamp(34px, 5vw, 52px);
+  }
+
+  .sfb-film-player {
+    width: min(100%, 760px);
+  }
+
+
+  /* Story */
+
+  .sfb-story-section {
+    min-height: 570px;
+
+    padding:
+      86px
+      42px;
+
+    &__inner {
+      gap: 48px;
+    }
+  }
+
+  .sfb-story-grid {
+    background-size: 54px 54px;
+  }
+
+  .sfb-story-title {
+    font-size: clamp(39px, 5vw, 52px);
+  }
+
+  .sfb-story-lead {
+    font-size: 18px;
+  }
+
+  .sfb-story-description {
+    font-size: 15px;
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  /* Film */
+
+  .sfb-film-section {
+    padding:
+      57px
+      30px
+      66px;
+
+    &__inner {
+      width: 100%;
+    }
+  }
+
+  .sfb-film-title {
+    margin-bottom: 14px;
+
+    font-size: clamp(22px, 6.6vw, 28px);
+    line-height: 1.05;
+  }
+
+  .sfb-film-player {
+    width: 100%;
+
+    box-shadow:
+      0 10px 17px rgba(0, 0, 0, 0.18),
+      0 2px 4px rgba(0, 0, 0, 0.07);
+  }
+
+
+  /* Story */
+
+  .sfb-story-section {
+    min-height: 568px;
+
+    padding:
+      68px
+      30px
+      72px;
+
+    &__inner {
+      display: block;
+
+      width: 100%;
+    }
+  }
+
+  .sfb-story-grid {
+    background-size: 61px 61px;
+  }
+
+  .sfb-story-visual {
+    width: 100%;
+
+    margin-bottom: 34px;
+
+    transform: translate3d(0, 26px, 0);
+
+    img {
+      aspect-ratio: 1.25 / 1;
+    }
+  }
+
+  .sfb-story-copy {
+    transform: translate3d(0, 22px, 0);
+
+    transition:
+      opacity 0.75s ease 0.24s,
+      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.24s;
+  }
+
+  .sfb-story-title {
+    margin-bottom: 15px;
+
+    font-size: clamp(29px, 8.5vw, 36px);
+    line-height: 1.18;
+  }
+
+  .sfb-story-lead {
+    margin-bottom: 21px;
+
+    font-size: clamp(17px, 4.8vw, 20px);
+    line-height: 1.55;
+  }
+
+  .sfb-story-description {
+    max-width: none;
+
+    font-size: 16px;
+    line-height: 1.75;
+  }
+}
+
+
+/* Small Mobile */
+
+@media (max-width: 374px) {
+  .sfb-film-section {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .sfb-story-section {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .sfb-story-title {
+    font-size: 28px;
+  }
+
+  .sfb-story-lead {
+    font-size: 17px;
+  }
+
+  .sfb-story-description {
+    font-size: 15px;
+  }
+}
+
+
+/* Reduced Motion */
 
 @media (prefers-reduced-motion: reduce) {
-  .sfb-store-slide,
-  .sfb-store-visual img,
-  .sfb-store-pagination__button {
+  .sfb-story-visual,
+  .sfb-story-copy {
+    opacity: 1 !important;
+
+    transform: none !important;
+
     transition: none !important;
+  }
+}
+/* ========= 以上是影片＋故事 ========= */
+/* ========= 以上是影片＋故事 ========= */
+
+
+
+/* ========= 以下是特色說明兩區塊 ========= */
+/* ========= 以下是特色說明兩區塊 ========= */
+/* ==========================================================================
+   Cotton + Re-Flex Sections
+============================================================================ */
+
+$sfb-feature-blue: #007fc8;
+$sfb-feature-line-light: #a8d7ef;
+$sfb-feature-text: #202020;
+$sfb-feature-gray: #777;
+$sfb-feature-white: #fff;
+
+
+/* Common Decorative Line */
+
+.sfb-section-line {
+  position: relative;
+
+  width: 100%;
+  height: 6px;
+
+  margin-top: clamp(34px, 4vw, 56px);
+
+  overflow: hidden;
+
+  background-color: $sfb-feature-line-light;
+
+  &::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+
+    width: clamp(85px, 20%, 160px);
+
+    content: "";
+
+    background-color: $sfb-feature-blue;
+  }
+}
+
+
+/* 01. Cotton Technology Section */
+
+.sfb-cotton-section {
+  position: relative;
+
+  width: 100%;
+  margin: 0;
+
+  overflow: hidden;
+
+  background-color: $sfb-feature-white;
+
+  &__inner {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    width: 100%;
+    min-height: clamp(650px, 55vw, 940px);
+    margin: 0 auto;
+  }
+}
+
+
+/* Cotton Image */
+
+.sfb-cotton-media {
+  position: relative;
+
+  grid-column: 2;
+  grid-row: 1;
+
+  min-width: 0;
+  min-height: 100%;
+
+  overflow: hidden;
+
+  background-color: #f3f3f3;
+
+  opacity: 0;
+
+  transform:
+    translate3d(0, 34px, 0)
+    scale(1.025);
+
+  transition:
+    opacity 0.85s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change:
+    opacity,
+    transform;
+
+  img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+
+/* Cotton Content */
+
+.sfb-cotton-content {
+  grid-column: 1;
+  grid-row: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-width: 0;
+
+  padding:
+    clamp(105px, 12vw, 190px)
+    clamp(70px, 7.5vw, 145px)
+    clamp(125px, 13vw, 205px);
+
+  opacity: 0;
+
+  transform: translate3d(0, 28px, 0);
+
+  transition:
+    opacity 0.75s ease 0.3s,
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+
+  will-change:
+    opacity,
+    transform;
+
+  &__top,
+  &__bottom {
+    width: 100%;
+  }
+
+  &__bottom {
+    margin-top: clamp(80px, 10vw, 150px);
+  }
+}
+
+
+/* Cotton Visible State */
+
+.sfb-cotton-section.is-visible {
+  .sfb-cotton-media {
+    opacity: 1;
+
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  .sfb-cotton-content {
+    opacity: 1;
+
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+/* Cotton Typography */
+
+.sfb-cotton-title {
+  margin: 0;
+
+  color: $sfb-feature-blue;
+
+  font-family:
+    "Roboto",
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
+
+  font-size: clamp(34px, 3.1vw, 54px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
+.sfb-cotton-subtitle {
+  margin: 0 0 24px;
+
+  color: $sfb-feature-text;
+
+  font-family:
+    "Roboto",
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
+
+  font-size: clamp(21px, 1.7vw, 29px);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.sfb-cotton-description {
+  max-width: 720px;
+  margin: 0;
+
+  color: $sfb-feature-gray;
+
+  font-family:
+    "Roboto",
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
+
+  font-size: clamp(15px, 1.15vw, 19px);
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+
+/* 02. Re-Flex Sticky Scroll Section */
+
+/*
+ * 三個狀態：
+ * section 高度為 300vh。
+ *
+ * sticky 內容固定在畫面中，
+ * 外層剩餘的捲動距離用來切換三個狀態。
+ */
+
+.sfb-reflex-section {
+  position: relative;
+
+  width: 100%;
+  min-height: 300vh;
+  margin: 0;
+
+  background-color: $sfb-feature-white;
+}
+
+.sfb-reflex-sticky {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+
+  overflow: hidden;
+
+  background-color: $sfb-feature-white;
+}
+
+.sfb-reflex-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+
+/* Re-Flex Image Stack */
+
+.sfb-reflex-media {
+  position: relative;
+
+  grid-column: 1;
+  grid-row: 1;
+
+  min-width: 0;
+  height: 100%;
+
+  overflow: hidden;
+
+  background-color: #f2f2f2;
+}
+
+.sfb-reflex-slide {
+  position: absolute;
+  inset: 0;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transform: scale(1.035);
+
+  transition:
+    opacity 0.65s ease,
+    transform 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+
+  pointer-events: none;
+
+  img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  &.is-active {
+    z-index: 2;
+
+    opacity: 1;
+
+    transform: scale(1);
+  }
+
+  &.is-leaving {
+    z-index: 1;
+
+    opacity: 0;
+
+    transform: scale(1.015);
+  }
+}
+
+
+/* Re-Flex Content */
+
+.sfb-reflex-content {
+  position: relative;
+
+  grid-column: 2;
+  grid-row: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-width: 0;
+
+  padding:
+    clamp(70px, 8vw, 135px)
+    clamp(55px, 7vw, 130px);
+
+  background-color: $sfb-feature-white;
+}
+
+.sfb-reflex-heading {
+  width: 100%;
+}
+
+.sfb-reflex-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+
+  gap: 0 22px;
+
+  margin: 0;
+
+  color: $sfb-feature-blue;
+
+  font-size: clamp(36px, 3.5vw, 60px);
+  font-weight: 700;
+  line-height: 1.2;
+
+  &__en {
+    font-family:
+      "Roboto",
+      Arial,
+      sans-serif;
+
+    letter-spacing: 0.055em;
+  }
+
+  &__zh {
+    font-family:
+      "Noto Sans TC",
+      "PingFang TC",
+      "Microsoft JhengHei",
+      sans-serif;
+  }
+
+  sup {
+    position: relative;
+    top: -0.35em;
+
+    font-size: 0.38em;
+    line-height: 1;
+    vertical-align: baseline;
+  }
+}
+
+
+/* Re-Flex List */
+
+.sfb-reflex-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: clamp(20px, 2.2vh, 34px);
+
+  margin:
+    clamp(65px, 8vh, 120px)
+    0
+    0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.sfb-reflex-item {
+  position: relative;
+
+  margin: 0;
+  padding: 0;
+
+  opacity: 1;
+
+  transform: none;
+
+  transition: none;
+
+  /*
+   * 非作用中狀態
+   */
+  &:not(.is-active) {
+    .sfb-reflex-item__icon-default {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .sfb-reflex-item__icon-active {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .sfb-reflex-item__title {
+      color: #b2b2b2;
+    }
+
+    .sfb-reflex-item__description {
+      color: #c0c0c0;
+    }
+  }
+
+  /* 作用中狀態 */
+  &.is-active {
+    /*
+     * 不再使用 translate，
+     * active 時 icon 與文字位置都不會移動。
+     */
+    transform: none;
+
+    .sfb-reflex-item__icon-default {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .sfb-reflex-item__icon-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .sfb-reflex-item__title,
+    .sfb-reflex-item__description {
+      color: $sfb-feature-blue;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+
+    gap: clamp(14px, 1.2vw, 18px);
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    color: inherit;
+
+    font: inherit;
+    text-align: left;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    appearance: none;
+
+    &:focus-visible {
+      outline: 2px solid $sfb-feature-blue;
+      outline-offset: 8px;
+    }
+  }
+
+  &__icon {
+    position: relative;
+
+    flex: 0 0 clamp(34px, 2.8vw, 46px);
+
+    width: clamp(34px, 2.8vw, 46px);
+    height: clamp(34px, 2.8vw, 46px);
+
+    /*
+     * 兩張 SVG 疊在同一個位置，
+     * 切換時尺寸與位置都不會跳動。
+     */
+    img {
+      position: absolute;
+      inset: 0;
+
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+  }
+
+  &__icon-default {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__icon-active {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__content {
+    display: block;
+
+    min-width: 0;
+  }
+
+  &__title,
+  &__description {
+    display: block;
+
+    transition: color 0.3s ease;
+  }
+
+  &__title {
+    margin: 0 0 3px;
+
+    color: #b2b2b2;
+
+    font-family:
+      "Roboto",
+      "Noto Sans TC",
+      "PingFang TC",
+      "Microsoft JhengHei",
+      sans-serif;
+
+    font-size: clamp(20px, 1.65vw, 28px);
+    font-weight: 500;
+    line-height: 1.4;
+
+    sup {
+      position: relative;
+      top: -0.3em;
+
+      font-size: 0.42em;
+      line-height: 1;
+      vertical-align: baseline;
+    }
+  }
+
+  &__description {
+    color: #c0c0c0;
+
+    font-family:
+      "Roboto",
+      "Noto Sans TC",
+      "PingFang TC",
+      "Microsoft JhengHei",
+      sans-serif;
+
+    font-size: clamp(15px, 1.15vw, 19px);
+    line-height: 1.5;
+  }
+}
+
+
+/* Progress */
+
+.sfb-reflex-progress {
+  display: none;
+}
+
+
+/* Tablet */
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .sfb-cotton-content {
+    padding:
+      80px
+      52px
+      90px;
+
+    &__bottom {
+      margin-top: 70px;
+    }
+  }
+
+  .sfb-cotton-title {
+    font-size: clamp(28px, 3.5vw, 40px);
+  }
+
+  .sfb-cotton-subtitle {
+    font-size: 20px;
+  }
+
+  .sfb-cotton-description {
+    font-size: 15px;
+  }
+
+  .sfb-reflex-content {
+    padding:
+      65px
+      48px;
+  }
+
+  .sfb-reflex-title {
+    gap: 0 13px;
+
+    font-size: clamp(29px, 3.8vw, 43px);
+  }
+
+  .sfb-reflex-list {
+    gap: 23px;
+
+    margin-top: 65px;
+  }
+
+  .sfb-reflex-item {
+    &__button {
+      gap: 18px;
+    }
+
+    &__icon {
+      flex-basis: 58px;
+
+      width: 58px;
+    }
+
+    &__title {
+      font-size: 18px;
+    }
+
+    &__description {
+      font-size: 14px;
+    }
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  /*  Cotton */
+
+  .sfb-cotton-section {
+    &__inner {
+      display: flex;
+      flex-direction: column;
+
+      min-height: 0;
+
+      padding:
+        76px
+        30px
+        86px;
+    }
+  }
+
+  .sfb-cotton-media {
+    order: 1;
+
+    width: 100%;
+    min-height: 0;
+
+    aspect-ratio: 1.7 / 1;
+
+    background-color: transparent;
+
+    transform:
+      translate3d(0, 24px, 0)
+      scale(1.02);
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+  }
+
+  .sfb-cotton-content {
+    order: 2;
+
+    display: block;
+
+    padding: 42px 0 0;
+
+    transform: translate3d(0, 22px, 0);
+
+    transition:
+      opacity 0.72s ease 0.25s,
+      transform 0.82s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+
+    &__bottom {
+      margin-top: 62px;
+    }
+  }
+
+  .sfb-cotton-title {
+    font-size: clamp(25px, 7vw, 31px);
+    line-height: 1.45;
+  }
+
+  .sfb-section-line {
+    height: 5px;
+    margin-top: 28px;
+
+    &::before {
+      width: 36px;
+    }
+  }
+
+  .sfb-cotton-subtitle {
+    margin-bottom: 18px;
+
+    font-size: clamp(17px, 4.6vw, 20px);
+    line-height: 1.6;
+  }
+
+  .sfb-cotton-description {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+
+  /* Re-Flex sticky */
+
+  .sfb-reflex-section {
+    min-height: 300svh;
+  }
+
+  .sfb-reflex-sticky {
+    height: 100svh;
+    min-height: 650px;
+  }
+
+  .sfb-reflex-layout {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    min-height: 0;
+
+    padding:
+      clamp(24px, 5vh, 52px)
+      30px
+      clamp(22px, 4vh, 42px);
+  }
+
+  .sfb-reflex-media {
+    flex: 0 0 auto;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1.7 / 1;
+
+    background-color: transparent;
+  }
+
+  .sfb-reflex-content {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-height: 0;
+
+    padding:
+      clamp(30px, 4.5vh, 48px)
+      0
+      0;
+  }
+
+  .sfb-reflex-title {
+    flex-wrap: nowrap;
+
+    gap: 0 10px;
+
+    font-size: clamp(24px, 7vw, 31px);
+    line-height: 1.25;
+
+    white-space: nowrap;
+  }
+
+  .sfb-reflex-list {
+    gap: clamp(13px, 2vh, 20px);
+
+    margin-top: clamp(38px, 5vh, 58px);
+  }
+
+  .sfb-reflex-item {
+    opacity: 0.25;
+
+    &.is-active {
+      opacity: 1;
+
+      transform: translate3d(5px, 0, 0);
+    }
+
+    &__button {
+      gap: 17px;
+    }
+
+    &__icon {
+      flex: 0 0 clamp(40px, 3vw, 54px);
+
+      width: clamp(40px, 3vw, 54px);
+      height: clamp(40px, 3vw, 54px);
+    }
+
+    &__title {
+      font-size: clamp(16px, 4.5vw, 18px);
+    }
+
+    &__description {
+      font-size: clamp(13px, 3.7vw, 15px);
+    }
+  }
+
+  .sfb-reflex-progress {
+    display: block;
+
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+    left: 30px;
+
+    height: 2px;
+
+    overflow: hidden;
+
+    background-color: rgba($sfb-feature-blue, 0.18);
+
+    &__bar {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      background-color: $sfb-feature-blue;
+
+      transform: scaleX(0);
+      transform-origin: left center;
+
+      will-change: transform;
+    }
+  }
+}
+
+
+/* Small Mobile */
+
+@media (max-width: 374px) {
+  .sfb-cotton-section {
+    &__inner {
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+  }
+
+  .sfb-cotton-title {
+    font-size: 24px;
+  }
+
+  .sfb-reflex-layout {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .sfb-reflex-title {
+    gap: 0 7px;
+
+    font-size: 23px;
+  }
+
+  .sfb-reflex-item {
+    &__button {
+      gap: 14px;
+    }
+
+    &__icon {
+      flex-basis: 40px;
+
+      width: 40px;
+    }
+
+    &__title {
+      font-size: 15px;
+    }
+
+    &__description {
+      font-size: 13px;
+    }
+  }
+
+  .sfb-reflex-progress {
+    right: 24px;
+    left: 24px;
+  }
+}
+
+
+/* Short Screen Adjustment */
+
+@media (max-height: 720px) and (min-width: 768px) {
+  .sfb-reflex-content {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .sfb-reflex-list {
+    gap: 17px;
+
+    margin-top: 46px;
+  }
+
+  .sfb-reflex-item {
+    &__icon {
+      flex-basis: 54px;
+
+      width: 54px;
+    }
+  }
+}
+
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .sfb-cotton-media,
+  .sfb-cotton-content,
+  .sfb-reflex-slide,
+  .sfb-reflex-item {
+    transition: none !important;
+  }
+
+  .sfb-cotton-media,
+  .sfb-cotton-content {
+    opacity: 1 !important;
+
+    transform: none !important;
+  }
+
+  .sfb-reflex-slide {
+    transform: none !important;
+  }
+}
+/* ========= 以上是特色說明兩區塊 ========= */
+/* ========= 以上是特色說明兩區塊 ========= */
+
+
+
+/* ========= 以下是系列區塊 ========= */
+/* ========= 以下是系列區塊 ========= */
+
+/* Variables */
+
+$sfb-series-background: #3493d0;
+$sfb-series-marquee: rgba(0, 104, 177, 0.2);
+$sfb-series-white: #fff;
+$sfb-series-card-background: #edf4f8;
+
+
+/* Section */
+
+.sfb-product-series {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+
+  overflow: hidden;
+
+  color: $sfb-series-white;
+  background-color: $sfb-series-background;
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+
+    width: min(100% - 64px, 1280px);
+    margin: 0 auto;
+
+    padding:
+      clamp(62px, 7vw, 105px)
+      0
+      clamp(70px, 7vw, 110px);
+  }
+}
+
+
+/* Background Moving Text 三段大型文字，由上到下排列 */
+
+.sfb-product-series__marquee {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.sfb-product-series__marquee-row {
+  position: absolute;
+  left: 0;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  &--top {
+    top: 2%;
+  }
+
+  &--middle {
+    top: 35%;
+  }
+
+  &--bottom {
+    top: 68%;
+  }
+}
+
+.sfb-product-series__marquee-track {
+  display: flex;
+  align-items: center;
+
+  width: max-content;
+
+  will-change: transform;
+
+  span {
+    flex: none;
+
+    margin-right: clamp(60px, 6vw, 130px);
+
+    color: $sfb-series-marquee;
+
+    font-family:
+      "Roboto",
+      Arial,
+      sans-serif;
+
+    font-size: clamp(180px, 20vw, 380px);
+    font-weight: 700;
+    line-height: 0.8;
+    letter-spacing: -0.06em;
+    white-space: nowrap;
+  }
+}
+
+
+/* 上層：由左往右 */
+
+.sfb-product-series__marquee-row--top {
+  .sfb-product-series__marquee-track {
+    animation:
+      sfb-series-marquee-right
+      42s
+      linear
+      infinite;
+  }
+}
+
+
+/* 中層：由右往左 */
+
+.sfb-product-series__marquee-row--middle {
+  .sfb-product-series__marquee-track {
+    animation:
+      sfb-series-marquee-left
+      48s
+      linear
+      infinite;
+  }
+}
+
+
+/* 下層：由左往右 */
+
+.sfb-product-series__marquee-row--bottom {
+  .sfb-product-series__marquee-track {
+    animation:
+      sfb-series-marquee-right
+      55s
+      linear
+      infinite;
+  }
+}
+
+
+/* Marquee Keyframes */
+
+@keyframes sfb-series-marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-25%, 0, 0);
+  }
+}
+
+@keyframes sfb-series-marquee-right {
+  from {
+    transform: translate3d(-25%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+/* Header */
+
+.sfb-product-series__header {
+  width: min(100%, 760px);
+
+  margin:
+    0
+    auto
+    clamp(38px, 4vw, 58px);
+
+  text-align: left;
+}
+
+.sfb-product-series__eyebrow {
+  margin: 0 0 19px;
+
+  color: rgba($sfb-series-white, 0.65);
+
+  font-family:
+    "Roboto",
+    Arial,
+    sans-serif;
+
+  font-size: clamp(14px, 1.1vw, 17px);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.sfb-product-series__title {
+  margin: 0 0 22px;
+
+  color: $sfb-series-white;
+
+  font-family:
+    "Roboto",
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
+
+  font-size: clamp(38px, 3.8vw, 60px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.sfb-product-series__description {
+  margin: 0;
+
+  color: rgba($sfb-series-white, 0.92);
+
+  font-family:
+    "Roboto",
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
+
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.sfb-product-series__mobile-break {
+  display: none;
+}
+
+
+/*  Product Viewport */
+
+.sfb-product-series__viewport {
+  width: 100%;
+}
+
+
+/* Desktop Product Grid
+   四個等寬欄位，中間圖片跨兩欄
+   五張圖片皆為 1:1 */
+
+.sfb-product-series__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  grid-template-rows:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 24px;
+
+  width: 100%;
+}
+
+
+/* Product Card */
+
+.sfb-product-card {
+  position: relative;
+
+  display: block;
+
+  min-width: 0;
+  min-height: 0;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  background-color: $sfb-series-card-background;
+
+  text-decoration: none;
+
+  img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition:
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.45s ease;
+
+    will-change: transform;
+  }
+
+  &::after {
+    position: absolute;
+    inset: 0;
+
+    content: "";
+
+    background-color: rgba(0, 80, 150, 0);
+
+    transition:
+      background-color
+      0.4s
+      ease;
+
+    pointer-events: none;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.035);
+    }
+
+    &::after {
+      background-color: rgba(0, 80, 150, 0.08);
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid $sfb-series-white;
+    outline-offset: 5px;
+  }
+
+  &--left-top {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  &--left-bottom {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  &--main {
+    grid-column: 2 / 4;
+    grid-row: 1 / 3;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+  }
+
+  &--right-top {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  &--right-bottom {
+    grid-column: 4;
+    grid-row: 2;
+  }
+}
+
+
+/* Individual Image Positions */
+
+.sfb-product-card--left-top {
+  img {
+    object-position: center center;
+  }
+}
+
+.sfb-product-card--left-bottom {
+  img {
+    object-position: center top;
+  }
+}
+
+.sfb-product-card--main {
+  img {
+    object-position: center top;
+  }
+}
+
+.sfb-product-card--right-top,
+.sfb-product-card--right-bottom {
+  img {
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+
+/* Large Desktop */
+
+@media (min-width: 1440px) {
+  .sfb-product-series {
+    &__inner {
+      width: min(100% - 80px, 1400px);
+    }
+  }
+
+  .sfb-product-series__header {
+    width: min(100%, 780px);
+  }
+
+  .sfb-product-series__grid {
+    gap: 26px;
+  }
+}
+
+
+/* Tablet */
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .sfb-product-series {
+    min-height: 0;
+
+    &__inner {
+      width: min(100% - 48px, 1050px);
+
+      padding:
+        64px
+        0
+        78px;
+    }
+  }
+
+  .sfb-product-series__header {
+    width: min(100%, 680px);
+
+    margin-bottom: 42px;
+  }
+
+  .sfb-product-series__title {
+    font-size: clamp(34px, 4.5vw, 48px);
+  }
+
+  .sfb-product-series__description {
+    font-size: 15px;
+  }
+
+  .sfb-product-series__grid {
+    gap: 18px;
+  }
+
+  .sfb-product-series__marquee-track {
+    span {
+      font-size: clamp(165px, 22vw, 300px);
+    }
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .sfb-product-series {
+    min-height: 0;
+
+    &__inner {
+      width: 100%;
+
+      padding:
+        68px
+        0
+        54px;
+    }
+  }
+
+
+  /* ------------------------------------------
+     三段背景文字
+  ------------------------------------------ */
+
+  .sfb-product-series__marquee-row {
+    &--top {
+      top: 1%;
+    }
+
+    &--middle {
+      top: 34%;
+    }
+
+    &--bottom {
+      top: 67%;
+    }
+  }
+
+  .sfb-product-series__marquee-track {
+    span {
+      margin-right: 42px;
+
+      font-size: clamp(210px, 78vw, 320px);
+      line-height: 0.84;
+    }
+  }
+
+  .sfb-product-series__marquee-row--top {
+    .sfb-product-series__marquee-track {
+      animation-duration: 34s;
+    }
+  }
+
+  .sfb-product-series__marquee-row--middle {
+    .sfb-product-series__marquee-track {
+      animation-duration: 39s;
+    }
+  }
+
+  .sfb-product-series__marquee-row--bottom {
+    .sfb-product-series__marquee-track {
+      animation-duration: 44s;
+    }
+  }
+
+
+  /* ------------------------------------------
+     Header
+     小標與主標題置中
+     內文靠左
+  ------------------------------------------ */
+
+  .sfb-product-series__header {
+    width: min(100% - 60px, 420px);
+
+    margin:
+      0
+      auto
+      48px;
+
+    padding: 0;
+  }
+
+  .sfb-product-series__eyebrow {
+    margin:
+      0
+      auto
+      13px;
+
+    text-align: center;
+
+    font-size: 14px;
+  }
+
+  .sfb-product-series__title {
+    max-width: none;
+
+    margin:
+      0
+      auto
+      21px;
+
+    text-align: center;
+
+    font-size: clamp(27px, 8vw, 34px);
+    line-height: 1.15;
+  }
+
+  .sfb-product-series__mobile-break {
+    display: inline;
+  }
+
+  .sfb-product-series__description {
+    width: 100%;
+    max-width: 390px;
+
+    margin: 0 auto;
+
+    text-align: left;
+
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+
+  /* ------------------------------------------
+     Horizontal Product Slider
+  ------------------------------------------ */
+
+  .sfb-product-series__viewport {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+
+    cursor: grab;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+      scroll-snap-type: none;
+
+      .sfb-product-card {
+        pointer-events: none;
+      }
+    }
+  }
+
+  .sfb-product-series__grid {
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 18px;
+
+    width: max-content;
+    height: auto;
+
+    padding:
+      0
+      36px;
+
+    grid-template-columns: none;
+    grid-template-rows: none;
+  }
+
+  .sfb-product-card {
+    flex:
+      0
+      0
+      min(76vw, 320px);
+
+    width: min(76vw, 320px);
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &--left-top,
+    &--left-bottom,
+    &--main,
+    &--right-top,
+    &--right-bottom {
+      grid-column: auto;
+      grid-row: auto;
+
+      width: min(76vw, 320px);
+      height: auto;
+
+      aspect-ratio: 1 / 1;
+    }
+
+    &--main {
+      flex-basis: min(76vw, 320px);
+    }
+
+    &--right-top,
+    &--right-bottom {
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+
+/* Small Mobile */
+
+@media (max-width: 374px) {
+  .sfb-product-series {
+    &__inner {
+      padding-top: 58px;
+    }
+  }
+
+  .sfb-product-series__header {
+    width: calc(100% - 48px);
+
+    margin-bottom: 42px;
+  }
+
+  .sfb-product-series__title {
+    font-size: 27px;
+  }
+
+  .sfb-product-series__description {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .sfb-product-series__grid {
+    gap: 14px;
+
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+
+  .sfb-product-card {
+    flex-basis: 76vw;
+
+    width: 76vw;
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+
+    &--left-top,
+    &--left-bottom,
+    &--main,
+    &--right-top,
+    &--right-bottom {
+      width: 76vw;
+      height: auto;
+
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  .sfb-product-series__marquee-track {
+    span {
+      margin-right: 34px;
+
+      font-size: clamp(185px, 82vw, 280px);
+    }
+  }
+}
+
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .sfb-product-series__marquee-track {
+    animation: none !important;
+
+    transform: none !important;
+  }
+
+  .sfb-product-card {
+    img {
+      transition: none;
+    }
+  }
+
+  .sfb-product-series__viewport {
+    scroll-behavior: auto;
+  }
+}
+/* ========= 以上是系列區塊 ========= */
+/* ========= 以上是系列區塊 ========= */
+
+
+
+/* ========= 以下是升級區塊 ========= */
+/* ========= 以下是升級區塊 ========= */
+/* Variables */
+
+$sfb-comfort-background: #fff;
+$sfb-comfort-text: #333;
+$sfb-comfort-body: #696969;
+$sfb-comfort-blue: #0087d4;
+$sfb-comfort-blue-light: #96cfea;
+$sfb-comfort-heading: #a69886;
+$sfb-comfort-border: #ddd;
+
+
+/* Section */
+
+.sfb-comfort {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background-color: $sfb-comfort-background;
+
+  &__inner {
+    width: 100%;
+  }
+
+  &__heading {
+    width: min(100% - 80px, 1280px);
+
+    margin: 0 auto;
+
+    padding:
+      clamp(82px, 8vw, 130px)
+      0
+      clamp(50px, 5vw, 78px);
+
+    color: $sfb-comfort-heading;
+
+    font-family:
+      "Noto Sans TC",
+      "PingFang TC",
+      "Microsoft JhengHei",
+      sans-serif;
+
+    font-size: clamp(28px, 2.25vw, 42px);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+}
+
+
+/* Step */
+
+.sfb-comfort-step {
+  position: relative;
+
+  width: 100%;
+
+  background-color: $sfb-comfort-background;
+
+  & + & {
+    border-top: 1px solid $sfb-comfort-border;
+  }
+
+  &__layout {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.15fr)
+      minmax(340px, 0.85fr);
+
+    column-gap: clamp(60px, 7vw, 112px);
+
+    align-items: center;
+
+    width: min(100% - 80px, 1040px);
+    min-height: clamp(620px, 60vw, 780px);
+
+    margin: 0 auto;
+
+    padding:
+      clamp(62px, 6vw, 92px)
+      0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+  }
+
+  &__header {
+    width: 100%;
+  }
+
+  &__number {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: $sfb-comfort-blue;
+
+    font-family:
+      "Roboto",
+      Arial,
+      sans-serif;
+
+    font-size: clamp(18px, 1.4vw, 23px);
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  &__title {
+    margin: 0;
+
+    color: $sfb-comfort-blue;
+
+    font-family:
+      "Noto Sans TC",
+      "PingFang TC",
+      "Microsoft JhengHei",
+      sans-serif;
+
+    font-size: clamp(28px, 2.15vw, 38px);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  &__progress {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    width: 100%;
+    height: 5px;
+
+    margin-top: clamp(30px, 3.4vw, 46px);
+
+    overflow: hidden;
+  }
+
+  &__progress-item {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $sfb-comfort-blue-light;
+
+    transition:
+      background-color 0.45s ease,
+      opacity 0.45s ease;
+
+    &.is-active {
+      background-color: $sfb-comfort-blue;
+    }
+  }
+
+  &__texts {
+    position: relative;
+
+    width: 100%;
+    min-height: 145px;
+
+    margin-top: clamp(58px, 6vw, 88px);
+  }
+
+  &__media {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 0.73 / 1;
+
+    overflow: hidden;
+
+    background-color: #f3f5f6;
+  }
+
+
+  /* Step 1 */
+
+  &--step-1 {
+    .sfb-comfort-step__content {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .sfb-comfort-step__media {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+
+
+  /* Step 2 */
+
+  &--step-2 {
+    .sfb-comfort-step__layout {
+      grid-template-columns:
+        minmax(340px, 0.85fr)
+        minmax(0, 1.15fr);
+    }
+
+    .sfb-comfort-step__media {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .sfb-comfort-step__content {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+}
+
+
+/* Copy Slides 三組文字疊在同一個位置，只顯示目前項目 */
+
+.sfb-comfort-copy {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  visibility: hidden;
+
+  opacity: 0;
+
+  transform: translate3d(0, 12px, 0);
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease,
+    visibility 0s linear 0.55s;
+
+  pointer-events: none;
+
+  &.is-active {
+    z-index: 2;
+
+    visibility: visible;
+
+    opacity: 1;
+
+    transform: translate3d(0, 0, 0);
+
+    transition:
+      opacity 0.55s ease,
+      transform 0.55s ease,
+      visibility 0s linear 0s;
+
+    pointer-events: auto;
+  }
+
+  &__title {
+    margin:
+      0
+      0
+      16px;
+
+    color: $sfb-comfort-text;
+
+    font-family:
+      "Noto Sans TC",
+      "PingFang TC",
+      "Microsoft JhengHei",
+      sans-serif;
+
+    font-size: clamp(18px, 1.4vw, 22px);
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  &__description {
+    margin: 0;
+
+    color: $sfb-comfort-body;
+
+    font-family:
+      "Noto Sans TC",
+      "PingFang TC",
+      "Microsoft JhengHei",
+      sans-serif;
+
+    font-size: clamp(14px, 1vw, 16px);
+    font-weight: 400;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+  }
+}
+
+
+/* Image Slides 三張圖片疊在同一個容器中 */
+
+.sfb-comfort-image {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  visibility: hidden;
+
+  opacity: 0;
+
+  transform: scale(1.035);
+
+  transition:
+    opacity 0.8s ease,
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.8s;
+
+  pointer-events: none;
+
+  img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &.is-active {
+    z-index: 2;
+
+    visibility: visible;
+
+    opacity: 1;
+
+    transform: scale(1);
+
+    transition:
+      opacity 0.8s ease,
+      transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear 0s;
+  }
+}
+
+
+/* Individual Image Positions */
+
+.sfb-comfort-step--step-1 {
+  .sfb-comfort-image {
+    img {
+      object-position: center;
+    }
+  }
+}
+
+.sfb-comfort-step--step-2 {
+  .sfb-comfort-image {
+    img {
+      object-position: center;
+    }
+  }
+}
+
+
+/* Large Desktop */
+
+@media (min-width: 1440px) {
+  .sfb-comfort {
+    &__heading {
+      width: min(100% - 120px, 1440px);
+    }
+  }
+
+  .sfb-comfort-step {
+    &__layout {
+      width: min(100% - 120px, 1140px);
+    }
+  }
+}
+
+
+/* Tablet */
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .sfb-comfort {
+    &__heading {
+      width: min(100% - 56px, 1080px);
+
+      padding:
+        68px
+        0
+        48px;
+    }
+  }
+
+  .sfb-comfort-step {
+    &__layout {
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(280px, 0.78fr);
+
+      column-gap: 48px;
+
+      width: min(100% - 56px, 900px);
+      min-height: 620px;
+
+      padding:
+        54px
+        0;
+    }
+
+    &--step-2 {
+      .sfb-comfort-step__layout {
+        grid-template-columns:
+          minmax(280px, 0.78fr)
+          minmax(0, 1fr);
+      }
+    }
+
+    &__texts {
+      min-height: 155px;
+
+      margin-top: 52px;
+    }
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .sfb-comfort {
+    border-top: 3px solid $sfb-comfort-blue;
+
+    &__heading {
+      width: auto;
+
+      margin:
+        0
+        30px;
+
+      padding:
+        83px
+        0
+        49px;
+
+      font-size: 18px;
+      line-height: 1.45;
+    }
+  }
+
+  .sfb-comfort-step {
+    &__layout {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+      min-height: 0;
+
+      padding:
+        0
+        30px
+        76px;
+    }
+
+    &__content {
+      display: contents;
+    }
+
+    &__header {
+      order: 1;
+
+      width: 100%;
+    }
+
+    &__number {
+      margin-bottom: 4px;
+
+      font-size: 16px;
+    }
+
+    &__title {
+      font-size: 25px;
+      line-height: 1.35;
+    }
+
+    &__progress {
+      width: 52%;
+      min-width: 162px;
+      max-width: 210px;
+      height: 5px;
+
+      margin-top: 49px;
+    }
+
+    &__media {
+      order: 2;
+
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1.63 / 1;
+
+      margin-top: 51px;
+    }
+
+    &__texts {
+      order: 3;
+
+      width: 100%;
+      min-height: 160px;
+
+      margin-top: 42px;
+    }
+
+
+    /* Step 1 Mobile */
+
+    &--step-1 {
+      .sfb-comfort-image {
+        img {
+          object-position: center;
+        }
+      }
+    }
+
+
+    /* Step 2 Mobile */
+
+    &--step-2 {
+      .sfb-comfort-step__layout {
+        display: flex;
+
+        padding-top: 95px;
+      }
+
+      .sfb-comfort-step__media {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .sfb-comfort-step__content {
+        grid-column: auto;
+        grid-row: auto;
+      }
+    }
+  }
+
+  .sfb-comfort-copy {
+    &__title {
+      margin-bottom: 9px;
+
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    &__description {
+      font-size: 16px;
+      line-height: 1.65;
+    }
+  }
+}
+
+
+/* Small Mobile */
+
+@media (max-width: 374px) {
+  .sfb-comfort {
+    &__heading {
+      margin-right: 24px;
+      margin-left: 24px;
+
+      padding-top: 72px;
+    }
+  }
+
+  .sfb-comfort-step {
+    &__layout {
+      padding:
+        0
+        24px
+        68px;
+    }
+
+    &--step-2 {
+      .sfb-comfort-step__layout {
+        padding-top: 82px;
+      }
+    }
+
+    &__title {
+      font-size: 23px;
+    }
+
+    &__progress {
+      margin-top: 42px;
+    }
+
+    &__media {
+      margin-top: 45px;
+    }
+
+    &__texts {
+      min-height: 180px;
+
+      margin-top: 38px;
+    }
+  }
+
+  .sfb-comfort-copy {
+    &__description {
+      font-size: 15px;
+    }
+  }
+}
+
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .sfb-comfort-copy,
+  .sfb-comfort-image,
+  .sfb-comfort-step__progress-item {
+    transition: none;
+  }
+}
+/* ========= 以上是系列區塊 ========= */
+/* ========= 以上是系列區塊 ========= */
+
+
+
+/* ========= 以下是產品區塊 ========= */
+/* ========= 以下是產品區塊 ========= */
+/* ==========================================================================
+   Blue Label Featured Products
+   Prefix:
+   - sfb-featured-products
+   - sfb-featured-product
+============================================================================ */
+
+
+/* ==========================================================================
+   Variables
+============================================================================ */
+
+$sfb-featured-background: #fff;
+$sfb-featured-blue: #0087d4;
+$sfb-featured-text: #333;
+$sfb-featured-body: #8a8a8a;
+$sfb-featured-image-background: #eef4f7;
+
+
+/* ==========================================================================
+   Section
+============================================================================ */
+
+.sfb-featured-products {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background-color: $sfb-featured-background;
+
+  &__inner {
+    width: min(100% - 80px, 1280px);
+    margin: 0 auto;
+
+    padding:
+      clamp(92px, 9vw, 145px)
+      0
+      clamp(105px, 10vw, 165px);
+  }
+}
+
+
+/* ==========================================================================
+   Header
+============================================================================ */
+
+.sfb-featured-products__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  width: 100%;
+  margin-bottom: clamp(42px, 4vw, 58px);
+}
+
+.sfb-featured-products__heading-group {
+  min-width: 0;
+}
+
+.sfb-featured-products__title {
+  margin: 0;
+
+  color: $sfb-featured-blue;
+
+  font-family:
+    "Roboto",
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
+
+  font-size: clamp(30px, 2.65vw, 44px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.sfb-featured-products__description {
+  margin: 20px 0 0;
+
+  color: $sfb-featured-body;
+
+  font-family:
+    "Roboto",
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
+
+  font-size: clamp(14px, 1.05vw, 16px);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.sfb-featured-products__view-all {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+
+  gap: 19px;
+
+  min-width: 160px;
+  min-height: 58px;
+  padding: 12px 25px;
+
+  border-radius: 999px;
+
+  color: #fff;
+  background-color: $sfb-featured-blue;
+
+  font-family:
+    "Roboto",
+    Arial,
+    sans-serif;
+
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    color 0.35s ease,
+    background-color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+
+  svg {
+    width: 9px;
+    height: 15px;
+
+    transition: transform 0.35s ease;
+  }
+
+  &:hover {
+    color: $sfb-featured-blue;
+    background-color: #fff;
+
+    box-shadow:
+      inset 0 0 0 1px $sfb-featured-blue;
+
+    transform: translate3d(0, -2px, 0);
+
+    svg {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba($sfb-featured-blue, 0.3);
+    outline-offset: 5px;
+  }
+}
+
+
+/* ==========================================================================
+   Product Viewport
+============================================================================ */
+
+.sfb-featured-products__viewport {
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   Product Grid
+============================================================================ */
+
+.sfb-featured-products__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  column-gap: clamp(18px, 2vw, 28px);
+  row-gap: clamp(42px, 4vw, 58px);
+
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   Product Card
+   預設先隱藏，觸發後依序顯示
+============================================================================ */
+
+.sfb-featured-product {
+  position: relative;
+
+  min-width: 0;
+
+  opacity: 0;
+
+  transform:
+    translate3d(0, 54px, 0)
+    scale(0.98);
+
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition-delay:
+    calc(var(--sfb-featured-index, 0) * 95ms);
+
+  will-change:
+    opacity,
+    transform;
+
+  &.is-visible {
+    opacity: 1;
+
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  &__link {
+    display: block;
+
+    color: inherit;
+
+    text-decoration: none;
+  }
+
+  &__image {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background-color: $sfb-featured-image-background;
+
+    img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      transition:
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.45s ease;
+
+      will-change: transform;
+    }
+
+    &::after {
+      position: absolute;
+      inset: 0;
+
+      content: "";
+
+      background-color: rgba($sfb-featured-blue, 0);
+
+      transition:
+        background-color 0.4s ease;
+
+      pointer-events: none;
+    }
+  }
+
+  &__content {
+    padding:
+      20px
+      8px
+      18px;
+
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+
+    color: $sfb-featured-blue;
+
+    font-family:
+      "Roboto",
+      "Noto Sans TC",
+      "PingFang TC",
+      "Microsoft JhengHei",
+      sans-serif;
+
+    font-size: clamp(17px, 1.4vw, 21px);
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  &__description {
+    margin: 11px 0 0;
+
+    color: $sfb-featured-body;
+
+    font-family:
+      "Roboto",
+      "Noto Sans TC",
+      "PingFang TC",
+      "Microsoft JhengHei",
+      sans-serif;
+
+    font-size: clamp(13px, 0.95vw, 15px);
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 16px;
+
+    border: 1px solid $sfb-featured-blue;
+    border-radius: 5px;
+
+    color: $sfb-featured-blue;
+    background-color: transparent;
+
+    font-family:
+      "Roboto",
+      "Noto Sans TC",
+      "PingFang TC",
+      "Microsoft JhengHei",
+      sans-serif;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-align: center;
+    text-decoration: none;
+
+    transition:
+      color 0.35s ease,
+      background-color 0.35s ease;
+
+    &:hover {
+      color: #fff;
+      background-color: $sfb-featured-blue;
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgba($sfb-featured-blue, 0.25);
+      outline-offset: 4px;
+    }
+  }
+
+  &:hover {
+    .sfb-featured-product__image {
+      img {
+        transform: scale(1.045);
+      }
+
+      &::after {
+        background-color: rgba($sfb-featured-blue, 0.06);
+      }
+    }
+  }
+}
+
+
+/* ==========================================================================
+   Large Desktop
+============================================================================ */
+
+@media (min-width: 1440px) {
+  .sfb-featured-products {
+    &__inner {
+      width: min(100% - 120px, 1440px);
+    }
+  }
+}
+
+
+/* ==========================================================================
+   Tablet
+============================================================================ */
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .sfb-featured-products {
+    &__inner {
+      width: min(100% - 56px, 1080px);
+
+      padding:
+        82px
+        0
+        105px;
+    }
+  }
+
+  .sfb-featured-products__header {
+    margin-bottom: 38px;
+  }
+
+  .sfb-featured-products__title {
+    font-size: clamp(27px, 3.7vw, 36px);
+  }
+
+  .sfb-featured-products__view-all {
+    min-width: 140px;
+    min-height: 52px;
+
+    font-size: 16px;
+  }
+
+  .sfb-featured-products__grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 42px 20px;
+  }
+}
+
+
+/* ==========================================================================
+   Mobile
+   橫向滑動，一次可看到約兩張商品
+============================================================================ */
+
+@media (max-width: 767px) {
+  .sfb-featured-products {
+    &__inner {
+      width: 100%;
+
+      padding:
+        48px
+        0
+        64px;
+    }
+  }
+
+  .sfb-featured-products__header {
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 36px;
+    padding:
+      0
+      30px;
+  }
+
+  .sfb-featured-products__title {
+    font-size: clamp(18px, 5.4vw, 22px);
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  .sfb-featured-products__description {
+    display: none;
+  }
+
+  .sfb-featured-products__view-all {
+    gap: 12px;
+
+    min-width: 104px;
+    min-height: 42px;
+    padding: 10px 17px;
+
+    font-size: 14px;
+
+    svg {
+      width: 7px;
+      height: 12px;
+    }
+  }
+
+
+  /* ------------------------------------------
+     Horizontal Slider
+  ------------------------------------------ */
+
+  .sfb-featured-products__viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+
+    scroll-snap-type: x mandatory;
+
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .sfb-featured-products__grid {
+    display: flex;
+
+    gap: 28px;
+
+    width: max-content;
+
+    padding:
+      0
+      30px;
+
+    grid-template-columns: none;
+  }
+
+  .sfb-featured-product {
+    flex:
+      0
+      0
+      min(41vw, 176px);
+
+    width: min(41vw, 176px);
+
+    scroll-snap-align: start;
+
+    transform:
+      translate3d(32px, 0, 0);
+
+    transition-duration:
+      0.65s,
+      0.75s;
+
+    transition-delay:
+      calc(var(--sfb-featured-index, 0) * 80ms);
+
+    &.is-visible {
+      transform:
+        translate3d(0, 0, 0);
+    }
+
+    &__content {
+      padding:
+        14px
+        0
+        0;
+
+      text-align: left;
+    }
+
+    &__title {
+      font-size: 16px;
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+
+    &__description,
+    &__button {
+      display: none;
+    }
+  }
+}
+
+
+/* ==========================================================================
+   Small Mobile
+============================================================================ */
+
+@media (max-width: 374px) {
+  .sfb-featured-products__header {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .sfb-featured-products__title {
+    font-size: 17px;
+  }
+
+  .sfb-featured-products__view-all {
+    min-width: 98px;
+
+    padding-right: 15px;
+    padding-left: 15px;
+
+    font-size: 13px;
+  }
+
+  .sfb-featured-products__grid {
+    gap: 22px;
+
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .sfb-featured-product {
+    flex-basis: 42vw;
+
+    width: 42vw;
+
+    &__title {
+      font-size: 15px;
+    }
+  }
+}
+
+
+/* ==========================================================================
+   Reduced Motion
+============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .sfb-featured-product {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+
+  .sfb-featured-product__image {
+    img {
+      transition: none;
+    }
+  }
+
+  .sfb-featured-products__view-all,
+  .sfb-featured-products__view-all svg,
+  .sfb-featured-product__button {
+    transition: none;
   }
 }
