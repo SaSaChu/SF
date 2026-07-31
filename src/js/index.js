@@ -2017,3 +2017,148 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+
+
+/** 回航計劃設定 **/
+/* ==========================================================================
+   Blue Label Circular Project
+   Desktop:
+   - 第一次滑鼠進入區塊時，三張卡片依序出現。
+   - 播放完成後永久顯示，不再重播。
+
+   Mobile / Touch:
+   - 第一次進入畫面時依序出現。
+   - 播放完成後永久顯示，不再重播。
+============================================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = Array.from(
+    document.querySelectorAll(
+      "[data-sfb-circular]"
+    )
+  );
+
+  if (!sections.length) {
+    return;
+  }
+
+  const hoverMedia = window.matchMedia(
+    "(hover: hover) and (pointer: fine)"
+  );
+
+  const reducedMotionMedia = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  sections.forEach((section) => {
+    const cards = Array.from(
+      section.querySelectorAll(
+        "[data-sfb-circular-card]"
+      )
+    );
+
+    if (!cards.length) {
+      return;
+    }
+
+    let hasPlayed = false;
+
+    /**
+     * 將每張卡片索引寫入 CSS 變數，
+     * 用於控制依序出現的延遲時間。
+     */
+    cards.forEach((card, index) => {
+      card.style.setProperty(
+        "--sfb-circular-index",
+        index.toString()
+      );
+    });
+
+    /**
+     * 播放一次卡片顯示動畫。
+     */
+    const revealCardsOnce = () => {
+      if (hasPlayed) {
+        return;
+      }
+
+      hasPlayed = true;
+
+      cards.forEach((card) => {
+        card.classList.add(
+          "is-visible"
+        );
+      });
+
+      observer.disconnect();
+    };
+
+    /**
+     * Reduced Motion：
+     * 不播放動畫，直接顯示。
+     */
+    if (reducedMotionMedia.matches) {
+      cards.forEach((card) => {
+        card.classList.add(
+          "is-visible"
+        );
+      });
+
+      hasPlayed = true;
+
+      return;
+    }
+
+    /**
+     * 桌機第一次滑鼠移入時播放。
+     */
+    section.addEventListener(
+      "mouseenter",
+      revealCardsOnce,
+      {
+        once: true
+      }
+    );
+
+    /**
+     * 鍵盤焦點第一次進入時也播放。
+     */
+    section.addEventListener(
+      "focusin",
+      revealCardsOnce,
+      {
+        once: true
+      }
+    );
+
+    /**
+     * 手機與觸控裝置沒有 Hover，
+     * 第一次進入視窗後自動播放。
+     */
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (
+            entry.target !== section ||
+            !entry.isIntersecting ||
+            hasPlayed
+          ) {
+            return;
+          }
+
+          if (!hoverMedia.matches) {
+            revealCardsOnce();
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -8% 0px"
+      }
+    );
+
+    observer.observe(section);
+  });
+});
