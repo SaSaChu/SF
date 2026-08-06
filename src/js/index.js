@@ -277,633 +277,553 @@ $(function () {
 });
 
 
+// 影片效果
+/* ==========================================================================
+   Brand Background Video Playlist
+   多支背景影片依序播放，最後一支播完回到第一支
+============================================================================ */
 
-/** Store設定 **/
-/**
- * SUNFLOWER BLUE LABEL
- * Store Slider
- *
- * Desktop:
- * 滑鼠位於 Store 區塊時，以滾輪切換門市。
- * 第一張往上、最後一張往下時，恢復頁面正常捲動。
- *
- * Mobile:
- * 自動輪播、左右滑動、圓點切換。
- */
+document.addEventListener("DOMContentLoaded", () => {
+  const videoHeroes = Array.from(
+    document.querySelectorAll(
+      "[data-sfb-video-hero]"
+    )
+  );
 
-$(function () {
-  'use strict';
-
-  var $window = $(window);
-  var $document = $(document);
-
-  var $storeSection = $('[data-sfb-store]');
-  var $storeSlides = $('[data-sfb-store-slide]');
-  var $storePagination = $('[data-sfb-store-pagination]');
-
-  /*
-   * 頁面沒有 Store 時停止執行。
-   */
-  if (
-    !$storeSection.length ||
-    !$storeSlides.length
-  ) {
+  if (!videoHeroes.length) {
     return;
   }
 
-  var storeElement = $storeSection.get(0);
-  var slideCount = $storeSlides.length;
-  var currentIndex = 0;
+  const reducedMotionMedia = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
 
-  /*
-   * 版型斷點。
-   */
-  var mobileBreakpoint = 768;
-
-  /*
-   * 桌機滾輪設定。
-   */
-  var wheelThreshold = 35;
-  var wheelCooldown = 850;
-
-  var wheelAccumulator = 0;
-  var wheelLocked = false;
-  var wheelUnlockTimer = null;
-
-  /*
-   * 手機自動輪播。
-   */
-  var autoplayDelay = 4500;
-  var autoplayTimer = null;
-
-  /*
-   * 手機觸控資料。
-   */
-  var touchStartX = 0;
-  var touchStartY = 0;
-
-  var touchCurrentX = 0;
-  var touchCurrentY = 0;
-
-  var isTouching = false;
-
-  /*
-   * 使用者是否偏好減少動畫。
-   */
-  var reduceMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches;
-
-  /**
-   * 判斷目前是否為手機版。
-   *
-   * @returns {boolean}
-   */
-  function isMobile() {
-    return window.innerWidth < mobileBreakpoint;
-  }
-
-  /**
-   * 限制數值範圍。
-   *
-   * @param {number} value
-   * @param {number} min
-   * @param {number} max
-   * @returns {number}
-   */
-  function clamp(value, min, max) {
-    return Math.min(
-      Math.max(value, min),
-      max
+  videoHeroes.forEach((section) => {
+    const videos = Array.from(
+      section.querySelectorAll(
+        "[data-sfb-background-video]"
+      )
     );
-  }
 
-  /**
-   * 取得 Header 高度。
-   *
-   * @returns {number}
-   */
-  function getHeaderHeight() {
-    var cssValue = getComputedStyle(
-      document.documentElement
-    ).getPropertyValue('--header-height');
+    const control = section.querySelector(
+      "[data-sfb-video-control]"
+    );
 
-    var headerHeight = parseFloat(cssValue);
-
-    if (!Number.isNaN(headerHeight)) {
-      return headerHeight;
-    }
-
-    var $header = $('[data-header]');
-
-    if ($header.length) {
-      return $header.outerHeight() || 0;
-    }
-
-    return 0;
-  }
-
-  /**
-   * 建立手機版輪播圓點。
-   */
-  function createPagination() {
-    if (!$storePagination.length) {
+    if (!videos.length) {
       return;
     }
 
-    $storePagination.empty();
+    let currentIndex = 0;
+    let isPausedByUser = false;
+    let isVisible = false;
+    let switchTimer = null;
 
-    $storeSlides.each(function (index) {
-      var $button = $('<button>', {
-        type: 'button',
-        class: 'sfb-store-pagination__button',
-        'aria-label':
-          '切換至第 ' +
-          (index + 1) +
-          ' 間門市',
-        'data-sfb-store-page': index
+
+    /**
+     * 停止全部影片，但不歸零。
+     */
+    const pauseAllVideos = () => {
+      videos.forEach((video) => {
+        video.pause();
+      });
+    };
+
+
+    /**
+     * 清除延遲切換計時器。
+     */
+    const clearSwitchTimer = () => {
+      if (switchTimer === null) {
+        return;
+      }
+
+      window.clearTimeout(switchTimer);
+      switchTimer = null;
+    };
+
+
+    /**
+     * 播放指定影片。
+     *
+     * @param {number} nextIndex
+     */
+    const showVideo = async (nextIndex) => {
+      clearSwitchTimer();
+
+      const normalizedIndex =
+        (nextIndex + videos.length) % videos.length;
+
+      const previousVideo = videos[currentIndex];
+      const nextVideo = videos[normalizedIndex];
+
+      currentIndex = normalizedIndex;
+
+      videos.forEach((video, index) => {
+        const isActive = index === normalizedIndex;
+
+        video.classList.toggle(
+          "is-active",
+          isActive
+        );
+
+        video.setAttribute(
+          "aria-hidden",
+          isActive ? "false" : "true"
+        );
+
+        if (!isActive) {
+          video.pause();
+        }
       });
 
-      $storePagination.append($button);
-    });
-  }
-
-  /**
-   * 更新門市 Slide 狀態。
-   *
-   * @param {number} nextIndex
-   */
-  function updateSlides(nextIndex) {
-    var safeIndex = clamp(
-      nextIndex,
-      0,
-      slideCount - 1
-    );
-
-    currentIndex = safeIndex;
-
-    $storeSlides.each(function (index) {
-      var $slide = $(this);
-
-      $slide
-        .removeClass(
-          'is-active is-before is-after'
-        )
-        .attr('aria-hidden', 'true');
-
-      if (index < currentIndex) {
-        $slide.addClass('is-before');
-        return;
+      /*
+       * 每次切入時從頭播放。
+       */
+      try {
+        nextVideo.currentTime = 0;
+      } catch (error) {
+        // 部分瀏覽器在 metadata 尚未載入時無法立即指定時間。
       }
-
-      if (index > currentIndex) {
-        $slide.addClass('is-after');
-        return;
-      }
-
-      $slide
-        .addClass('is-active')
-        .attr('aria-hidden', 'false');
-    });
-
-    if ($storePagination.length) {
-      $storePagination
-        .find('[data-sfb-store-page]')
-        .removeClass('is-active')
-        .removeAttr('aria-current')
-        .eq(currentIndex)
-        .addClass('is-active')
-        .attr('aria-current', 'true');
-    }
-  }
-
-  /**
-   * 切換下一間門市。
-   *
-   * @param {boolean} loop
-   * @returns {boolean}
-   */
-  function goToNextSlide(loop) {
-    if (currentIndex < slideCount - 1) {
-      updateSlides(currentIndex + 1);
-      return true;
-    }
-
-    if (loop) {
-      updateSlides(0);
-      return true;
-    }
-
-    return false;
-  }
-
-  /**
-   * 切換上一間門市。
-   *
-   * @param {boolean} loop
-   * @returns {boolean}
-   */
-  function goToPreviousSlide(loop) {
-    if (currentIndex > 0) {
-      updateSlides(currentIndex - 1);
-      return true;
-    }
-
-    if (loop) {
-      updateSlides(slideCount - 1);
-      return true;
-    }
-
-    return false;
-  }
-
-  /**
-   * 判斷 Store 是否已進入主要操作範圍。
-   *
-   * Store 不需要完全填滿畫面。
-   * 只要區塊大部分可見，即可接管滾輪。
-   *
-   * @returns {boolean}
-   */
-  function isStoreReadyForWheel() {
-    var rect =
-      storeElement.getBoundingClientRect();
-
-    var headerHeight =
-      getHeaderHeight();
-
-    var viewportHeight =
-      window.innerHeight;
-
-    var visibleTop = Math.max(
-      rect.top,
-      headerHeight
-    );
-
-    var visibleBottom = Math.min(
-      rect.bottom,
-      viewportHeight
-    );
-
-    var visibleHeight = Math.max(
-      visibleBottom - visibleTop,
-      0
-    );
-
-    var requiredVisibleHeight =
-      rect.height * 0.72;
-
-    return (
-      visibleHeight >= requiredVisibleHeight
-    );
-  }
-
-  /**
-   * 暫時鎖定桌機滾輪。
-   *
-   * 避免觸控板一次觸發多張切換。
-   */
-  function lockWheel() {
-    wheelLocked = true;
-    wheelAccumulator = 0;
-
-    window.clearTimeout(wheelUnlockTimer);
-
-    wheelUnlockTimer = window.setTimeout(
-      function () {
-        wheelLocked = false;
-      },
-      reduceMotion ? 100 : wheelCooldown
-    );
-  }
-
-  /**
-   * 桌機版滾輪事件。
-   *
-   * @param {WheelEvent} event
-   */
-  function handleDesktopWheel(event) {
-    if (
-      isMobile() ||
-      slideCount <= 1
-    ) {
-      return;
-    }
-
-    if (!isStoreReadyForWheel()) {
-      wheelAccumulator = 0;
-      return;
-    }
-
-    var deltaY = event.deltaY;
-
-    if (!deltaY) {
-      return;
-    }
-
-    /*
-     * 第一張繼續往上時，
-     * 讓頁面正常回到上一個區塊。
-     */
-    if (
-      deltaY < 0 &&
-      currentIndex === 0
-    ) {
-      wheelAccumulator = 0;
-      return;
-    }
-
-    /*
-     * 最後一張繼續往下時，
-     * 讓頁面正常進入 Footer。
-     */
-    if (
-      deltaY > 0 &&
-      currentIndex === slideCount - 1
-    ) {
-      wheelAccumulator = 0;
-      return;
-    }
-
-    /*
-     * 還有門市可以切換時，
-     * 阻止頁面垂直滾動。
-     */
-    event.preventDefault();
-
-    if (wheelLocked) {
-      return;
-    }
-
-    wheelAccumulator += deltaY;
-
-    if (
-      Math.abs(wheelAccumulator) <
-      wheelThreshold
-    ) {
-      return;
-    }
-
-    if (wheelAccumulator > 0) {
-      goToNextSlide(false);
-    } else {
-      goToPreviousSlide(false);
-    }
-
-    lockWheel();
-  }
-
-  /*
-   * 使用原生 addEventListener，
-   * passive 必須設為 false，
-   * 才能使用 preventDefault。
-   */
-  storeElement.addEventListener(
-    'wheel',
-    handleDesktopWheel,
-    {
-      passive: false
-    }
-  );
-
-  /**
-   * 停止手機自動輪播。
-   */
-  function stopAutoplay() {
-    if (!autoplayTimer) {
-      return;
-    }
-
-    window.clearInterval(autoplayTimer);
-
-    autoplayTimer = null;
-  }
-
-  /**
-   * 啟動手機自動輪播。
-   */
-  function startAutoplay() {
-    stopAutoplay();
-
-    if (
-      !isMobile() ||
-      reduceMotion ||
-      slideCount <= 1 ||
-      document.hidden
-    ) {
-      return;
-    }
-
-    autoplayTimer = window.setInterval(
-      function () {
-        goToNextSlide(true);
-      },
-      autoplayDelay
-    );
-  }
-
-  /**
-   * 重新啟動手機自動輪播。
-   */
-  function restartAutoplay() {
-    stopAutoplay();
-    startAutoplay();
-  }
-
-  /**
-   * 手機觸控開始。
-   */
-  $storeSection.on(
-    'touchstart',
-    function (event) {
-      if (!isMobile()) {
-        return;
-      }
-
-      var originalEvent =
-        event.originalEvent;
 
       if (
-        !originalEvent.touches ||
-        !originalEvent.touches.length
+        !isVisible ||
+        isPausedByUser ||
+        document.hidden ||
+        reducedMotionMedia.matches
       ) {
         return;
       }
 
-      var touch =
-        originalEvent.touches[0];
-
-      touchStartX = touch.clientX;
-      touchStartY = touch.clientY;
-
-      touchCurrentX = touchStartX;
-      touchCurrentY = touchStartY;
-
-      isTouching = true;
-
-      stopAutoplay();
-    }
-  );
-
-  /**
-   * 手機觸控移動。
-   */
-  $storeSection.on(
-    'touchmove',
-    function (event) {
-      if (
-        !isMobile() ||
-        !isTouching
-      ) {
-        return;
+      try {
+        await nextVideo.play();
+      } catch (error) {
+        /*
+         * 若瀏覽器阻擋自動播放，
+         * 保持第一幀並等待使用者操作。
+         */
+        isPausedByUser = true;
+        updateControl();
       }
-
-      var originalEvent =
-        event.originalEvent;
-
-      if (
-        !originalEvent.touches ||
-        !originalEvent.touches.length
-      ) {
-        return;
-      }
-
-      var touch =
-        originalEvent.touches[0];
-
-      touchCurrentX = touch.clientX;
-      touchCurrentY = touch.clientY;
-
-      var moveX =
-        touchCurrentX - touchStartX;
-
-      var moveY =
-        touchCurrentY - touchStartY;
 
       /*
-       * 確定是水平滑動時，
-       * 才阻止頁面上下捲動。
+       * 前一支影片淡出完成後再歸零，
+       * 避免切換瞬間出現空白。
        */
-      if (
-        Math.abs(moveX) >
-        Math.abs(moveY)
-      ) {
-        event.preventDefault();
+      if (previousVideo !== nextVideo) {
+        switchTimer = window.setTimeout(
+          () => {
+            try {
+              previousVideo.currentTime = 0;
+            } catch (error) {
+              // 忽略不支援情況。
+            }
+          },
+          1100
+        );
       }
-    }
-  );
+    };
 
-  /**
-   * 手機觸控結束。
-   */
-  $storeSection.on(
-    'touchend touchcancel',
-    function () {
-      if (
-        !isMobile() ||
-        !isTouching
-      ) {
+
+    /**
+     * 播放下一支。
+     */
+    const showNextVideo = () => {
+      showVideo(currentIndex + 1);
+    };
+
+
+    /**
+     * 更新控制按鈕狀態。
+     */
+    const updateControl = () => {
+      if (!control) {
         return;
       }
 
-      var distanceX =
-        touchCurrentX - touchStartX;
+      control.classList.toggle(
+        "is-paused",
+        isPausedByUser
+      );
 
-      var distanceY =
-        touchCurrentY - touchStartY;
+      control.setAttribute(
+        "aria-pressed",
+        isPausedByUser ? "true" : "false"
+      );
 
-      var swipeThreshold = 45;
+      control.setAttribute(
+        "aria-label",
+        isPausedByUser
+          ? "播放背景影片"
+          : "暫停背景影片"
+      );
+    };
 
-      if (
-        Math.abs(distanceX) >
-        Math.abs(distanceY)
-      ) {
+
+    /**
+     * 每一支影片播完後播放下一支。
+     */
+    videos.forEach((video) => {
+      video.loop = false;
+      video.muted = true;
+      video.playsInline = true;
+
+      video.addEventListener(
+        "ended",
+        showNextVideo
+      );
+
+      /*
+       * 若影片載入失敗，直接跳下一支。
+       */
+      video.addEventListener(
+        "error",
+        () => {
+          if (
+            video.classList.contains(
+              "is-active"
+            )
+          ) {
+            showNextVideo();
+          }
+        }
+      );
+    });
+
+
+    /**
+     * 播放／暫停控制。
+     */
+    if (control) {
+      control.addEventListener(
+        "click",
+        () => {
+          isPausedByUser = !isPausedByUser;
+
+          if (isPausedByUser) {
+            pauseAllVideos();
+          } else {
+            showVideo(currentIndex);
+          }
+
+          updateControl();
+        }
+      );
+    }
+
+
+    /**
+     * 區塊進入畫面後播放，
+     * 離開畫面後暫停，節省效能。
+     */
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target !== section) {
+            return;
+          }
+
+          isVisible = entry.isIntersecting;
+
+          if (
+            isVisible &&
+            !isPausedByUser
+          ) {
+            showVideo(currentIndex);
+          } else {
+            pauseAllVideos();
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+    observer.observe(section);
+
+
+    /**
+     * 瀏覽器頁籤切換。
+     */
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (document.hidden) {
+          pauseAllVideos();
+
+          return;
+        }
+
         if (
-          distanceX <= -swipeThreshold
+          isVisible &&
+          !isPausedByUser
         ) {
-          goToNextSlide(true);
-        } else if (
-          distanceX >= swipeThreshold
-        ) {
-          goToPreviousSlide(true);
+          showVideo(currentIndex);
         }
       }
+    );
 
-      isTouching = false;
 
-      restartAutoplay();
-    }
-  );
+    /**
+     * 減少動態效果：
+     * 停留在第一支影片的第一幀。
+     */
+    const handleMotionChange = () => {
+      if (reducedMotionMedia.matches) {
+        pauseAllVideos();
+        showVideo(0);
 
-  /**
-   * 手機版輪播圓點。
-   */
-  $storePagination.on(
-    'click',
-    '[data-sfb-store-page]',
-    function () {
-      var index = Number(
-        $(this).attr(
-          'data-sfb-store-page'
-        )
-      );
-
-      if (Number.isNaN(index)) {
         return;
       }
 
-      updateSlides(index);
-      restartAutoplay();
-    }
-  );
-
-  /**
-   * 頁面切換到背景時停止輪播。
-   */
-  $document.on(
-    'visibilitychange',
-    function () {
-      if (document.hidden) {
-        stopAutoplay();
-        return;
+      if (
+        isVisible &&
+        !isPausedByUser
+      ) {
+        showVideo(currentIndex);
       }
+    };
 
-      if (isMobile()) {
-        startAutoplay();
-      }
-    }
-  );
-
-  /**
-   * 視窗尺寸切換。
-   */
-  $window.on(
-    'resize orientationchange',
-    function () {
-      wheelAccumulator = 0;
-      wheelLocked = false;
-
-      window.clearTimeout(
-        wheelUnlockTimer
+    if (
+      typeof reducedMotionMedia
+        .addEventListener ===
+      "function"
+    ) {
+      reducedMotionMedia.addEventListener(
+        "change",
+        handleMotionChange
       );
-
-      if (isMobile()) {
-        startAutoplay();
-      } else {
-        stopAutoplay();
-      }
+    } else {
+      reducedMotionMedia.addListener(
+        handleMotionChange
+      );
     }
+
+    updateControl();
+    showVideo(0);
+  });
+});
+
+
+/** Store設定 **/
+/* ==========================================================================
+   Store Showcase Slider
+   左側文字固定，右側圖片自動輪播
+============================================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const showcases = Array.from(
+    document.querySelectorAll(
+      "[data-sfb-store-showcase]"
+    )
   );
 
-  /**
-   * 初始化。
-   */
-  createPagination();
-  updateSlides(0);
-
-  if (isMobile()) {
-    startAutoplay();
+  if (!showcases.length) {
+    return;
   }
+
+  const reducedMotionMedia = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  showcases.forEach((showcase) => {
+    const slider = showcase.querySelector(
+      "[data-sfb-store-slider]"
+    );
+
+    const slides = Array.from(
+      showcase.querySelectorAll(
+        "[data-sfb-store-slide]"
+      )
+    );
+
+    const dots = Array.from(
+      showcase.querySelectorAll(
+        "[data-sfb-store-dot]"
+      )
+    );
+
+    if (!slider || slides.length <= 1) {
+      return;
+    }
+
+    const delayValue = Number.parseInt(
+      showcase.dataset.autoplayDelay,
+      10
+    );
+
+    const autoplayDelay = Number.isFinite(delayValue)
+      ? delayValue
+      : 4000;
+
+    let currentIndex = 0;
+    let autoplayTimer = null;
+    let isVisible = false;
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const showSlide = (nextIndex) => {
+      const normalizedIndex =
+        (nextIndex + slides.length) % slides.length;
+
+      currentIndex = normalizedIndex;
+
+      slides.forEach((slide, index) => {
+        const isActive = index === normalizedIndex;
+
+        slide.classList.toggle(
+          "is-active",
+          isActive
+        );
+
+        slide.setAttribute(
+          "aria-hidden",
+          isActive ? "false" : "true"
+        );
+      });
+
+      dots.forEach((dot, index) => {
+        const isActive = index === normalizedIndex;
+
+        dot.classList.toggle(
+          "is-active",
+          isActive
+        );
+
+        dot.setAttribute(
+          "aria-current",
+          isActive ? "true" : "false"
+        );
+      });
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayTimer === null) {
+        return;
+      }
+
+      window.clearTimeout(autoplayTimer);
+
+      autoplayTimer = null;
+    };
+
+    const scheduleNext = () => {
+      stopAutoplay();
+
+      if (
+        !isVisible ||
+        document.hidden ||
+        reducedMotionMedia.matches
+      ) {
+        return;
+      }
+
+      autoplayTimer = window.setTimeout(
+        () => {
+          showSlide(currentIndex + 1);
+          scheduleNext();
+        },
+        autoplayDelay
+      );
+    };
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const targetIndex = Number.parseInt(
+          dot.dataset.sfbStoreDot,
+          10
+        );
+
+        if (!Number.isFinite(targetIndex)) {
+          return;
+        }
+
+        showSlide(targetIndex);
+        scheduleNext();
+      });
+    });
+
+    slider.addEventListener(
+      "touchstart",
+      (event) => {
+        touchStartX =
+          event.changedTouches[0].clientX;
+
+        touchEndX = touchStartX;
+      },
+      {
+        passive: true
+      }
+    );
+
+    slider.addEventListener(
+      "touchmove",
+      (event) => {
+        touchEndX =
+          event.changedTouches[0].clientX;
+      },
+      {
+        passive: true
+      }
+    );
+
+    slider.addEventListener(
+      "touchend",
+      () => {
+        const swipeDistance =
+          touchEndX - touchStartX;
+
+        if (Math.abs(swipeDistance) < 45) {
+          return;
+        }
+
+        if (swipeDistance < 0) {
+          showSlide(currentIndex + 1);
+        } else {
+          showSlide(currentIndex - 1);
+        }
+
+        scheduleNext();
+      }
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target !== showcase) {
+            return;
+          }
+
+          isVisible = entry.isIntersecting;
+
+          if (isVisible) {
+            scheduleNext();
+          } else {
+            stopAutoplay();
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+    observer.observe(showcase);
+
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (document.hidden) {
+          stopAutoplay();
+        } else if (isVisible) {
+          scheduleNext();
+        }
+      }
+    );
+
+    showSlide(0);
+  });
 });
 
 

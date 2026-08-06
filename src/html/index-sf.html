@@ -40,18 +40,12 @@
           <span></span>
         </button>
       </div>
-
-      <nav
-        class="main-menu"
-        id="main-menu"
-        aria-hidden="true"
-        data-menu
-      >
-        <a href="#series">系列介紹</a>
-        <a href="#about">品牌理念</a>
-        <a href="#contact">聯絡我們</a>
-      </nav>
     </header>
+    <nav class="main-menu" id="main-menu" aria-hidden="true" data-menu>
+      <a href="#series">系列介紹</a>
+      <a href="#about">品牌理念</a>
+      <a href="#contact">聯絡我們</a>
+    </nav>
 
     <main id="top">
       <!-- Banner -->
@@ -90,40 +84,74 @@
 
 
       <!-- 影片放置區 -->
-      <section  class="sfb-film-section" aria-labelledby="sfb-film-title">
-        <div class="sfb-film-section__inner">
-          <h2
-            class="sfb-film-title"
-            id="sfb-film-title"
-          >
-            <span>Define,</span>
-            <span>and Feel Again.</span>
-          </h2>
-
-          <div class="sfb-film-player">
-            <div
-              class="sfb-film-player__ratio"
-              data-sfb-film
+      <section class="sfb-video-hero" aria-labelledby="sfb-video-hero-title" data-sfb-video-hero>
+        <!-- 背景影片 -->
+        <div
+          class="sfb-video-hero__media"
+          aria-hidden="true"
+        >
+          <video class="sfb-video-hero__video is-active" muted playsinline preload="auto" data-sfb-background-video>
+            <source
+              src="../images/videos/brand-video-01.mp4"
+              type="video/mp4"
             >
-              <!--
-                請把 VIDEO_ID 換成實際 YouTube 影片 ID。
+          </video>
 
-                例如：
-                https://www.youtube.com/watch?v=abcdefghijk
+          <video class="sfb-video-hero__video" muted playsinline preload="metadata" data-sfb-background-video>
+            <source
+              src="../images/videos/brand-video-02.mp4"
+              type="video/mp4"
+            >
+          </video>
 
-                VIDEO_ID 就是：
-                abcdefghijk
-              -->
-              <iframe
-                src="https://www.youtube.com/embed/nfEk_VcGQBo?si=A8SM9mXGQCcz4vzO"
-                title="SUNFLOWER BLUE LABEL 品牌影片"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
+          <video class="sfb-video-hero__video" muted playsinline preload="metadata" data-sfb-background-video>
+            <source
+              src="../images/videos/brand-video-03.mp4"
+              type="video/mp4"
+            >
+          </video>
+
+          <video class="sfb-video-hero__video" muted playsinline preload="metadata" data-sfb-background-video>
+            <source
+              src="../images/videos/brand-video-04.mp4"
+              type="video/mp4"
+            >
+          </video>
         </div>
+
+        <!-- 淺色遮罩 -->
+        <div
+          class="sfb-video-hero__overlay"
+          aria-hidden="true"
+        ></div>
+
+        <!-- 固定在正中央的文字 -->
+        <!-- <div class="sfb-video-hero__content">
+          <h2
+            class="sfb-video-hero__title"
+            id="sfb-video-hero-title"
+          >
+            Define,<br>
+            and Feel Again.
+          </h2>
+        </div> -->
+
+        <!-- 無障礙：暫停／播放 -->
+        <button
+          class="sfb-video-hero__control"
+          type="button"
+          aria-label="暫停背景影片"
+          aria-pressed="false"
+          data-sfb-video-control
+        >
+          <span class="sfb-video-hero__control-pause">
+            暫停
+          </span>
+
+          <span class="sfb-video-hero__control-play">
+            播放
+          </span>
+        </button>
       </section>
 
 
@@ -1247,139 +1275,145 @@
 
 
       <!-- 門市資訊 -->
-      <section class="sfb-store-section" id="store" data-sfb-store>
-        <div class="sfb-store-sticky">
-          <div class="sfb-store-slider">
-            <!-- 門市 01 -->
-            <article
-              class="sfb-store-slide is-active"
-              data-sfb-store-slide
-              aria-hidden="false"
+      <section class="sfb-store-showcase" aria-labelledby="sfb-store-showcase-title" data-sfb-store-showcase data-autoplay-delay="4000">
+        <!-- 左側固定文字 -->
+        <div class="sfb-store-showcase__content">
+          <div class="sfb-store-showcase__content-inner">
+            <h2
+              class="sfb-store-showcase__title"
+              id="sfb-store-showcase-title"
             >
-              <div class="sfb-store-copy">
-                <div class="sfb-store-copy__inner">
-                  <h2 class="sfb-store-title">
-                    全新體驗門市
-                  </h2>
+              全新體驗門市
+            </h2>
 
-                  <p class="sfb-store-description">
-                    走進 Blue Label 的世界，親身感受舒適的定義。
-                  </p>
+            <p class="sfb-store-showcase__lead">
+              走進 Blue Label 的世界，親身感受舒適的定義。
+            </p>
 
-                  <div class="sfb-store-information">
-                    <a
-                      class="sfb-store-address"
-                      href="https://maps.google.com/?q=臺北市中山區復興南路一段52號"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      臺北市中山區復興南路一段52號
-                    </a>
+            <div class="sfb-store-showcase__information">
+              <h2 class="fs5">Blue Label旗艦店</h2>
+              <a
+                class="sfb-store-showcase__address"
+                href="https://www.google.com/maps/search/臺北市中山區復興南路一段52號"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                地址：臺北市中山區復興南路一段52號
+              </a>
 
-                    <p class="sfb-store-time">
-                      11:00～21:30
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <p class="sfb-store-showcase__time">
+                11:00&nbsp;-&nbsp;21:30
+              </p>
+            </div>
+          </div>
+        </div>
 
-              <div class="sfb-store-visual">
-                <img
-                  src="../images/store/store01.png"
-                  alt="SUNFLOWER BLUE LABEL 體驗門市外觀"
-                >
-              </div>
-            </article>
-
-            <!-- 門市 02 -->
-            <article
-              class="sfb-store-slide"
+        <!-- 右側圖片輪播 -->
+        <div
+          class="sfb-store-showcase__slider"
+          data-sfb-store-slider
+        >
+          <div class="sfb-store-showcase__track">
+            <figure
+              class="sfb-store-showcase__slide is-active"
               data-sfb-store-slide
-              aria-hidden="true"
             >
-              <div class="sfb-store-copy">
-                <div class="sfb-store-copy__inner">
-                  <h2 class="sfb-store-title">
-                    城市概念門市
-                  </h2>
+              <img
+                src="../images/store/store01.webp"
+                alt="Blue Label 門市外觀"
+              >
+            </figure>
 
-                  <p class="sfb-store-description">
-                    在城市日常之中，探索貼近身體的舒適體驗。
-                  </p>
-
-                  <div class="sfb-store-information">
-                    <a
-                      class="sfb-store-address"
-                      href="https://maps.google.com/"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      臺北市信義區松高路00號
-                    </a>
-
-                    <p class="sfb-store-time">
-                      11:00～22:00
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="sfb-store-visual">
-                <img
-                  src="../images/store/store02.png"
-                  alt="SUNFLOWER BLUE LABEL 城市概念門市"
-                >
-              </div>
-            </article>
-
-            <!-- 門市 03 -->
-            <article
-              class="sfb-store-slide"
+            <figure
+              class="sfb-store-showcase__slide"
               data-sfb-store-slide
-              aria-hidden="true"
             >
-              <div class="sfb-store-copy">
-                <div class="sfb-store-copy__inner">
-                  <h2 class="sfb-store-title">
-                    生活體驗門市
-                  </h2>
+              <img
+                src="../images/store/store02.webp"
+                alt="Blue Label 門市外觀"
+              >
+            </figure>
 
-                  <p class="sfb-store-description">
-                    透過材質、機能與剪裁，重新認識自在生活。
-                  </p>
+            <figure
+              class="sfb-store-showcase__slide"
+              data-sfb-store-slide
+            >
+              <img
+                src="../images/store/store03.webp"
+                alt="Blue Label 門市外觀"
+              >
+            </figure>
 
-                  <div class="sfb-store-information">
-                    <a
-                      class="sfb-store-address"
-                      href="https://maps.google.com/"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      新北市板橋區新站路00號
-                    </a>
+            <figure
+              class="sfb-store-showcase__slide"
+              data-sfb-store-slide
+            >
+              <img
+                src="../images/store/store04.webp"
+                alt="Blue Label 門市外觀"
+              >
+            </figure>
 
-                    <p class="sfb-store-time">
-                      11:00～21:30
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <figure
+              class="sfb-store-showcase__slide"
+              data-sfb-store-slide
+            >
+              <img
+                src="../images/store/store05.webp"
+                alt="Blue Label 門市外觀"
+              >
+            </figure>
 
-              <div class="sfb-store-visual">
-                <img
-                  src="../images/store/store03.png"
-                  alt="SUNFLOWER BLUE LABEL 生活體驗門市"
-                >
-              </div>
-            </article>
+            <figure
+              class="sfb-store-showcase__slide"
+              data-sfb-store-slide
+            >
+              <img
+                src="../images/store/store06.webp"
+                alt="Blue Label 商品展示區"
+              >
+            </figure>
+
+            <figure
+              class="sfb-store-showcase__slide"
+              data-sfb-store-slide
+            >
+              <img
+                src="../images/store/store07.webp"
+                alt="Blue Label 商品展示區"
+              >
+            </figure>
           </div>
 
-          <!-- 手機版輪播圓點 -->
+          <!-- 輪播圓點 -->
           <div
-            class="sfb-store-pagination"
-            data-sfb-store-pagination
-            aria-label="門市輪播切換"
-          ></div>
+            class="sfb-store-showcase__pagination"
+            aria-label="門市照片切換"
+          >
+            <button
+              class="sfb-store-showcase__dot is-active"
+              type="button"
+              aria-label="顯示第 1 張照片"
+              aria-current="true"
+              data-sfb-store-dot="0"
+            ></button>
+
+            <button
+              class="sfb-store-showcase__dot"
+              type="button"
+              aria-label="顯示第 2 張照片"
+              aria-current="false"
+              data-sfb-store-dot="1"
+            ></button>
+
+            <button
+              class="sfb-store-showcase__dot"
+              type="button"
+              aria-label="顯示第 3 張照片"
+              aria-current="false"
+              data-sfb-store-dot="2"
+            ></button>
+          </div>
         </div>
       </section>
 
@@ -1429,7 +1463,7 @@
 
             <ul class="sfb-footer-links">
               <li>
-                <a href="#" target="_blank" rel="noopener">
+                <a href="https://www.instagram.com/bluelabel.sunflower/ " target="_blank" rel="noopener">
                   Instagram
                 </a>
               </li>
