@@ -2094,6 +2094,12 @@ $sfb-story-text: #303030;
   overflow: hidden;
   background-color: $sfb-feature-line-light;
 
+  &.nobefore {
+    &::before {
+      display: none;
+    }
+  }
+
   &::before {
     position: absolute;
     inset: 0 auto 0 0;
