@@ -309,208 +309,246 @@ button {
 
 .hero {
   position: relative;
-  /* 100vh 為舊瀏覽器備用、100svh 避免手機網址列影響、100dvh 可隨瀏覽器工具列即時變化 */
-  height: 100vh;
-  height: 100svh;
-  min-height: 680px;
 
-  /* Banner 從 Header 底下開始 */
-  margin-top: var(--header-height);
-
-  /* 高度扣掉 Header */
+  /*
+   * Header 本身位於 Hero 上方，
+   * Hero 高度直接扣掉 Header。
+   */
   height: calc(100svh - var(--header-height));
   min-height: calc(680px - var(--header-height));
-  overflow: hidden;
-  background-color: $white;
+
+  margin-top: var(--header-height);
   margin-bottom: 0;
+
+  overflow: hidden;
+
   border-bottom: 0;
 
+  background-color: $white;
 
-  /* 圖片外層 多留一些高度，供視差向上移動使用 */
+
+  /* ==========================================================================
+     Background Media
+  ========================================================================== */
+
   &__media {
-    /*position: absolute;
-    z-index: 0;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: calc(100% + 90px);
-    overflow: hidden;*/
     position: absolute;
     z-index: 0;
 
     /*
-     * 圖片上下都預留視差移動空間，
-     * 避免往上位移時底部露出白色背景。
+     * 上下額外增加空間，
+     * 供視差效果移動時使用，
+     * 避免底部露出白線。
      */
     top: -110px;
     right: 0;
     bottom: -110px;
     left: 0;
+
     height: auto;
+
     overflow: hidden;
   }
 
-  /* Banner 圖片 */
+
+  /* ==========================================================================
+     Background Image
+  ========================================================================== */
+
   &__image {
-    /*position: absolute;
-    inset: 0;
-
-    background-image: url("../images/banner-img.png");
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-
-    opacity: var(--hero-image-opacity);*/
-
-    /*
-     * 稍微放大，增加上下左右的安全裁切範圍。
-     */
-    /*transform:
-      translate3d(0, var(--hero-image-shift), 0)
-      scale(1.06);
-
-    transform-origin: center center;
-
-    will-change:
-      transform,
-      opacity;*/
-     
     position: absolute;
     inset: 0;
 
-    background-image: url("../images/banner-img.png");
+    width: 100%;
+    height: 100%;
+
+    background-image:
+      url("../images/banner-img.png");
+
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
 
-    /*opacity: var(--hero-image-opacity);*/
-
     transform:
-      translate3d(0, var(--hero-image-shift), 0)
+      translate3d(
+        0,
+        var(--hero-image-shift),
+        0
+      )
       scale(1.03);
 
     transform-origin: center top;
-    will-change: transform, opacity;
-  
+
+    will-change: transform;
   }
 
-  /* 捲動時逐漸變白的遮罩 */
+
+  /* ==========================================================================
+     Scroll Fade
+  ========================================================================== */
+
   &__fade {
     position: absolute;
     z-index: 1;
     inset: 0;
+
     background-color: $white;
+
     opacity: var(--hero-scroll-fade);
+
     pointer-events: none;
+
     will-change: opacity;
   }
 
-  /* 文字內容 */
+
+  /* ==========================================================================
+     Center Title Image
+     這裡就是文字 PNG 的定位區
+  ========================================================================== */
+
   &__content {
     position: absolute;
     z-index: 2;
-    top: 57%;
+
+    top: 50%;
     left: 50%;
-    width: min(620px, 48vw);
-    text-align: center;
-    transform: translate(-50%, -50%);
-  }
 
-  &__eyebrow {
-    margin: 0 0 18px;
-    color: $light-blue;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.4;
-  }
-
-  &__title {
-    margin: 0;
-    color: $primary-blue;
-    font-size: clamp(46px, 4.3vw, 70px);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: 0.02em;
-  }
-
-  &__description {
-    margin: 18px 0 27px;
-    color: $text-gray;
-    font-size: 16px;
-    line-height: 1.75;
-  }
-
-  &__button {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 180px;
-    height: 48px;
-    padding: 0 28px;
-    border: 1px solid $primary-blue;
-    border-radius: 999px;
-    color: $primary-blue;
-    background-color: rgba($white, 0.2);
-    font-size: 17px;
-    font-weight: 700;
-    transition:
-      color 0.3s ease,
-      background-color 0.3s ease,
-      transform 0.3s ease;
 
-    &:hover {
-      color: $white;
-      background-color: $primary-blue;
-      transform: translateY(-2px);
-    }
+    width: 100%;
+
+    transform:
+      translate(-50%, -50%);
+
+    text-align: center;
+
+    pointer-events: none;
   }
 
-  /*
-   * 桌機向下箭頭
-   */
+
+  &__content picture {
+    display: block;
+
+    width: auto;
+    height: auto;
+  }
+
+
+  &__title-image {
+    display: block;
+
+    /*
+     * PC 寬度：
+     * 最小約 430px
+     * 一般依 viewport 約 36vw
+     * 最大 650px
+     */
+    width:
+      clamp(
+        430px,
+        36vw,
+        650px
+      );
+
+    max-width: calc(100vw - 80px);
+    height: auto;
+
+    margin: 0 auto;
+  }
+
+
+  /* ==========================================================================
+     Scroll Arrow
+  ========================================================================== */
+
   &__scroll {
     position: absolute;
     z-index: 2;
+
     bottom: 8%;
     left: 50%;
+
     display: block;
+
     width: 32px;
     height: 100px;
-    color: $primary-blue;
-    transform: translateX(-50%);
-    animation: heroScrollFloat 2s ease-in-out infinite;
 
-    /*
-     * 垂直線
-     */
+    color: $primary-blue;
+
+    transform:
+      translateX(-50%);
+
+    animation:
+      heroScrollFloat
+      2s
+      ease-in-out
+      infinite;
+
+
+    /* 垂直線 */
     &::before {
       position: absolute;
+
       top: 0;
       left: 50%;
+
       width: 2px;
       height: 84px;
+
       content: "";
+
       background-color: currentColor;
-      transform: translateX(-50%) scaleY(0);
+
+      transform:
+        translateX(-50%)
+        scaleY(0);
+
       transform-origin: center top;
-      animation: heroScrollLine 2s ease-in-out infinite;
+
+      animation:
+        heroScrollLine
+        2s
+        ease-in-out
+        infinite;
     }
 
-    /* 箭頭 使用 border 畫成單一 V 型，避免交叉 */
+
+    /* V 型箭頭 */
     span {
       position: absolute;
+
       bottom: 16px;
       left: 50%;
+
       display: block;
+
       width: 15px;
       height: 15px;
-      border-right: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
 
-      /* 旋轉 45 度後形成向下箭頭 箭頭頂端會和垂直線連接 */
-      transform: translateX(-50%) rotate(45deg);
-      animation: heroScrollArrow 2s ease-in-out infinite;
+      border-right:
+        2px
+        solid
+        currentColor;
+
+      border-bottom:
+        2px
+        solid
+        currentColor;
+
+      transform:
+        translateX(-50%)
+        rotate(45deg);
+
+      animation:
+        heroScrollArrow
+        2s
+        ease-in-out
+        infinite;
     }
+
 
     &:hover {
       animation-play-state: paused;
@@ -522,20 +560,34 @@ button {
     }
   }
 
+
+  /* ==========================================================================
+     Arrow Animation
+  ========================================================================== */
+
   @keyframes heroScrollFloat {
-    0%, 100% {
-      transform: translateX(-50%) translateY(0);
+    0%,
+    100% {
+      transform:
+        translateX(-50%)
+        translateY(0);
     }
 
     50% {
-      transform: translateX(-50%) translateY(7px);
+      transform:
+        translateX(-50%)
+        translateY(7px);
     }
   }
+
 
   @keyframes heroScrollLine {
     0% {
       opacity: 0;
-      transform: translateX(-50%) scaleY(0);
+
+      transform:
+        translateX(-50%)
+        scaleY(0);
     }
 
     20% {
@@ -544,18 +596,27 @@ button {
 
     65% {
       opacity: 1;
-      transform: translateX(-50%) scaleY(1);
+
+      transform:
+        translateX(-50%)
+        scaleY(1);
     }
 
     100% {
       opacity: 0;
-      transform: translateX(-50%) scaleY(1);
+
+      transform:
+        translateX(-50%)
+        scaleY(1);
     }
   }
 
+
   @keyframes heroScrollArrow {
-    0%, 40% {
+    0%,
+    40% {
       opacity: 0;
+
       transform:
         translateX(-50%)
         translateY(-6px)
@@ -564,6 +625,7 @@ button {
 
     65% {
       opacity: 1;
+
       transform:
         translateX(-50%)
         translateY(0)
@@ -572,26 +634,103 @@ button {
 
     100% {
       opacity: 0;
+
       transform:
         translateX(-50%)
         translateY(6px)
         rotate(45deg);
     }
   }
-
 }
+
+
+/* ==========================================================================
+   Mobile
+============================================================================ */
 
 @media (max-width: 767px) {
   .hero {
+    /*
+     * 手機也維持：
+     * 可視高度 - Header。
+     */
+    height:
+      calc(
+        100svh -
+        var(--header-height)
+      );
+
+    min-height:
+      calc(
+        640px -
+        var(--header-height)
+      );
+
+
+    /* 背景圖改手機版本 */
     &__image {
-      background-image: url("../images/m-banner-img.png");
+      background-image:
+        url("../images/m-banner-img.png");
+
+      background-position:
+        center top;
+
+      background-size: cover;
+    }
+
+
+    /*
+     * 手機版文字依然是 Hero 正中央。
+     * 因為 Hero 已經扣掉 Header，
+     * 所以不需要另外加 top。
+     */
+    &__content {
+      position: absolute;
+      z-index: 2;
 
       /*
-       * 手機版建議還是以圖片上方為基準，
-       * 這樣人物的頭不容易被裁掉。
+       * 從 Hero 頂部往下約 28svh。
+       * Hero 本身已經從 Header 下方開始，
+       * 所以這裡不用再加 header-height。
        */
-      background-position: center top;
-      background-size: cover;
+      top: 28svh;
+      left: 50%;
+
+      display: block;
+
+      width: 100%;
+
+      transform: translateX(-50%);
+
+      text-align: center;
+
+      pointer-events: none;
+    }
+
+    &__content picture {
+      display: block;
+      width: 100%;
+    }
+
+    &__title-image {
+      display: block;
+
+      width: min(78vw, 420px);
+      height: auto;
+
+      margin: 0 auto;
+    }
+
+
+    /*
+     * 手機向下箭頭可稍微靠底。
+     */
+    &__scroll {
+      bottom: 3%;
+
+      transform:
+        translateX(-50%)
+        scale(0.88);
     }
   }
 }
@@ -690,7 +829,6 @@ button {
     min-height: calc(620px - var(--header-height));
 
     &__media {
-      /*height: calc(100% + 60px);*/
       top: -70px;
       right: 0;
       bottom: -70px;
@@ -702,7 +840,6 @@ button {
     &__image {
       background-image: url("../images/m-banner-img.png");
 
-      /* 手機版圖片也以上方為定位基準 */
       background-position: center top;
       background-size: cover;
       transform:
@@ -711,7 +848,7 @@ button {
       transform-origin: center center;
     }
 
-    &__content {
+    /*&__content {
       top: auto;
       right: 27px;
       bottom: max(18vh, 50px);
@@ -719,31 +856,31 @@ button {
       width: auto;
       text-align: left;
       transform: none;
-    }
+    }*/
 
     &__eyebrow {
       margin-bottom: 10px;
       font-size: clamp(13px, 3.7vw, 16px);
     }
 
-    &__title {
+    /*&__title {
       font-size: clamp(28px, 8vw, 36px);
       line-height: 1.15;
     }
-
-    &__description {
+*/
+    /*&__description {
       max-width: 300px;
       margin: 11px 0 18px;
       font-size: clamp(13px, 3.5vw, 15px);
       line-height: 1.65;
-    }
+    }*/
 
-    &__button {
+    /*&__button {
       min-width: 138px;
       height: 38px;
       padding: 0 21px;
       font-size: 15px;
-    }
+    }*/
 
     &__scroll {
       bottom: 24px;

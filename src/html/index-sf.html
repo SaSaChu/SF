@@ -49,11 +49,49 @@
 
     <main id="top">
       <!-- Banner -->
+      <section class="hero">
+
+        <!-- 背景圖 -->
+        <div class="hero__media">
+          <div class="hero__image"></div>
+        </div>
+
+        <!-- 捲動淡白遮罩 -->
+        <div class="hero__fade"></div>
+
+        <!-- 中央文字 PNG -->
+        <div class="hero__content">
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcset="../images/banner-title.png"
+            >
+
+            <img
+              class="hero__title-image"
+              src="../images/banner-title.png"
+              alt="Blue Label by Sun Flower"
+            >
+          </picture>
+        </div>
+
+        <!-- 向下箭頭 -->
+        <a
+          class="hero__scroll"
+          href="#next-section"
+          aria-label="往下瀏覽"
+        >
+          <span></span>
+        </a>
+
+      </section>
+
+      <!-- 原本一張圖的版本
       <section class="hero" aria-labelledby="hero-title" data-hero>
         <div class="hero__image" aria-hidden="true"></div>
         <div class="hero__fade" aria-hidden="true"></div>
 
-        <!-- <div class="hero__content">
+        <div class="hero__content">
           <p class="hero__eyebrow">
             The Answer to Comfort
           </p>
@@ -71,7 +109,7 @@
           <a class="hero__button" href="#series">
             探索系列
           </a>
-        </div> -->
+        </div>
 
         <a
           class="hero__scroll"
@@ -80,7 +118,7 @@
         >
           <span></span>
         </a>
-      </section>
+      </section> -->
 
       <!-- 產品區塊 -->
       <section class="sfb-featured-products border-top" data-sfb-featured-products>
