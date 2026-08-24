@@ -354,16 +354,27 @@ button {
   &__image {
     /*position: absolute;
     inset: 0;
+
     background-image: url("../images/banner-img.png");
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
-    opacity: var(--hero-image-opacity);
-    transform:
+
+    opacity: var(--hero-image-opacity);*/
+
+    /*
+     * 稍微放大，增加上下左右的安全裁切範圍。
+     */
+    /*transform:
       translate3d(0, var(--hero-image-shift), 0)
-      scale(1.01);
-    transform-origin: center top;
-    will-change: transform, opacity;*/
+      scale(1.06);
+
+    transform-origin: center center;
+
+    will-change:
+      transform,
+      opacity;*/
+     
     position: absolute;
     inset: 0;
 
@@ -372,20 +383,15 @@ button {
     background-position: center top;
     background-size: cover;
 
-    opacity: var(--hero-image-opacity);
+    /*opacity: var(--hero-image-opacity);*/
 
-    /*
-     * 稍微放大，增加上下左右的安全裁切範圍。
-     */
     transform:
       translate3d(0, var(--hero-image-shift), 0)
-      scale(1.06);
+      scale(1.03);
 
-    transform-origin: center center;
-
-    will-change:
-      transform,
-      opacity;
+    transform-origin: center top;
+    will-change: transform, opacity;
+  
   }
 
   /* 捲動時逐漸變白的遮罩 */
@@ -575,7 +581,20 @@ button {
 
 }
 
+@media (max-width: 767px) {
+  .hero {
+    &__image {
+      background-image: url("../images/m-banner-img.png");
 
+      /*
+       * 手機版建議還是以圖片上方為基準，
+       * 這樣人物的頭不容易被裁掉。
+       */
+      background-position: center top;
+      background-size: cover;
+    }
+  }
+}
 
 
 /* Desktop：高度較矮的螢幕 */
