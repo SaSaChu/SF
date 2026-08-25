@@ -448,9 +448,9 @@ button {
      */
     width:
       clamp(
-        430px,
+        215px,
         36vw,
-        650px
+        325px
       );
 
     max-width: calc(100vw - 80px);
@@ -715,7 +715,7 @@ button {
     &__title-image {
       display: block;
 
-      width: min(78vw, 420px);
+      width: min(100vw, 210px);
       height: auto;
 
       margin: 0 auto;
