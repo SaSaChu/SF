@@ -1008,36 +1008,32 @@ button {
    Store Showcase
    左側固定文字，右側圖片自動輪播
 ============================================================================ */
+/* Store */
+.sfb-store {
+  position: relative;
+  width: 100%;
+  background-color: $white;
+}
 
+/* Store Showcase */
 .sfb-store-showcase {
   position: relative;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
-
   width: 100%;
   height: min(625px, 100vh);
   min-height: 520px;
-
   overflow: hidden;
-
   background-color: $color-blue-primary;
 
-
-  /* ==========================================================================
-     Fixed Content
-  ========================================================================== */
-
+  /* Left Content */
   &__content {
     position: relative;
     z-index: 2;
-
     display: flex;
     align-items: center;
-
     min-width: 0;
     height: 100%;
-
     color: $white;
     background-color: $color-blue-primary;
   }
@@ -1045,20 +1041,16 @@ button {
   &__content-inner {
     width: min(100% - 96px, 600px);
     margin: 0 auto;
+    transform: translateY(-32px);
+  }
+
+  &__intro {
+    width: 100%;
   }
 
   &__title {
     margin: 0;
-
     color: $white;
-
-    font-family:
-      "Roboto",
-      "Noto Sans TC",
-      "PingFang TC",
-      "Microsoft JhengHei",
-      sans-serif;
-
     font-size: clamp(38px, 3.4vw, 58px);
     font-weight: 700;
     line-height: 1.25;
@@ -1068,45 +1060,34 @@ button {
   &__lead {
     max-width: 520px;
     margin: 22px 0 0;
-
     color: rgba($white, 0.95);
-
-    font-family:
-      "Roboto",
-      "Noto Sans TC",
-      "PingFang TC",
-      "Microsoft JhengHei",
-      sans-serif;
-
     font-size: clamp(17px, 1.35vw, 22px);
     line-height: 1.7;
   }
 
+  /* Store Information */
   &__information {
-    margin-top: clamp(66px, 7vw, 100px);
+    margin-top: clamp(60px, 6vw, 88px);
+  }
+
+  &__store-name {
+    margin: 0 0 7px;
+    color: $white;
+    font-size: clamp(23px, 1.8vw, 30px);
+    font-weight: 700;
+    line-height: 1.4;
   }
 
   &__address,
   &__time {
     color: $white;
-
-    font-family:
-      "Roboto",
-      "Noto Sans TC",
-      "PingFang TC",
-      "Microsoft JhengHei",
-      sans-serif;
-
-    font-size: clamp(17px, 1.35vw, 22px);
-    line-height: 1.6;
+    font-size: clamp(15px, 1.1vw, 18px);
+    line-height: 1.65;
   }
 
   &__address {
     display: inline-block;
-
-    text-decoration: underline;
-    text-underline-offset: 4px;
-
+    text-decoration: none;
     transition: opacity 0.3s ease;
 
     &:hover {
@@ -1120,31 +1101,53 @@ button {
   }
 
   &__time {
-    margin: 2px 0 0;
+    margin: 0;
   }
 
+  /* More Button */
+  &__more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 166px;
+    height: 44px;
+    margin-top: clamp(48px, 5vw, 72px);
+    padding: 0 25px;
+    border: 1px solid rgba($white, 0.9);
+    border-radius: 999px;
+    color: $white;
+    background-color: transparent;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    appearance: none;
 
-  /* ==========================================================================
-     Slider
-  ========================================================================== */
+    &:hover {
+      color: $color-blue-primary;
+      background-color: $white;
+    }
 
+    &:focus-visible {
+      outline: 3px solid rgba($white, 0.5);
+      outline-offset: 5px;
+    }
+  }
+
+  /* Slider */
   &__slider {
     position: relative;
-
     min-width: 0;
     height: 100%;
-
     overflow: hidden;
-
-    background-color: #dcebf3;
+    background-color: $sfb-store-image-background;
   }
 
   &__track {
     position: relative;
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
   }
 
@@ -1152,99 +1155,61 @@ button {
     position: absolute;
     z-index: 1;
     inset: 0;
-
     width: 100%;
     height: 100%;
     margin: 0;
-
     visibility: hidden;
-
     opacity: 0;
-
     transform: scale(1.035);
-
-    transition:
-      opacity 0.7s ease,
-      transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
-      visibility 0s linear 0.7s;
-
+    transition: opacity 0.7s ease, transform 1.1s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0.7s;
     pointer-events: none;
 
     img {
       display: block;
-
       width: 100%;
       height: 100%;
-
       object-fit: cover;
       object-position: center;
-
       user-select: none;
-
       -webkit-user-drag: none;
     }
 
     &.is-active {
       z-index: 2;
-
       visibility: visible;
-
       opacity: 1;
-
       transform: scale(1);
-
-      transition:
-        opacity 0.7s ease,
-        transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
-        visibility 0s linear 0s;
-
+      transition: opacity 0.7s ease, transform 1.1s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s;
       pointer-events: auto;
     }
   }
 
-
-  /* ==========================================================================
-     Pagination
-  ========================================================================== */
-
+  /* Pagination */
   &__pagination {
     position: absolute;
     z-index: 5;
     right: 30px;
     bottom: 26px;
-
     display: flex;
     align-items: center;
-
     gap: 9px;
   }
 
   &__dot {
     width: 9px;
     height: 9px;
-
     margin: 0;
     padding: 0;
-
     border: 1px solid $white;
     border-radius: 50%;
-
     background-color: transparent;
-
     cursor: pointer;
-
-    transition:
-      width 0.3s ease,
-      border-radius 0.3s ease,
-      background-color 0.3s ease;
-
+    transition: width 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease;
     appearance: none;
 
     &.is-active {
       width: 28px;
-
       border-radius: 999px;
-
       background-color: $white;
     }
 
@@ -1255,11 +1220,182 @@ button {
   }
 }
 
+/* Store Locations */
+.sfb-store-locations {
+  position: relative;
+  width: 100%;
+  background-color: $white;
 
-/* ==========================================================================
-   Tablet
-============================================================================ */
+  &__collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
+  &__content {
+    min-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate3d(0, -12px, 0);
+    transition: opacity 0.35s ease, transform 0.45s ease;
+  }
+
+  &__inner {
+    width: min(100% - 80px, 1240px);
+    margin: 0 auto;
+    padding: 48px 0 65px;
+  }
+
+  &.is-open {
+    .sfb-store-locations__collapse {
+      grid-template-rows: 1fr;
+    }
+
+    .sfb-store-locations__content {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      transition-delay: 0.12s;
+    }
+  }
+}
+
+/* Store Table */
+.sfb-store-locations__table-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.sfb-store-locations__table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  color: $text-gray;
+
+  thead {
+    th {
+      padding: 15px 24px;
+      color: #555;
+      background-color: $white;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    th:nth-child(1) {
+      width: 21%;
+    }
+
+    th:nth-child(2) {
+      width: 37%;
+    }
+
+    th:nth-child(3) {
+      width: 20%;
+    }
+
+    th:nth-child(4) {
+      width: 22%;
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: $white;
+
+      &:nth-child(odd) {
+        background-color: #f8f8f8;
+      }
+    }
+
+    td {
+      padding: 18px 24px;
+      border: 0;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      vertical-align: middle;
+
+      a {
+        transition: opacity 0.25s ease;
+
+        &:hover {
+          opacity: 0.65;
+        }
+      }
+
+      &[data-label="營業時間"] {
+        span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+/* Map */
+.sfb-store-locations__map {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.sfb-store-locations__map-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 20px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+/* Collapse Button */
+.sfb-store-locations__footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 48px;
+}
+
+.sfb-store-locations__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 166px;
+  height: 44px;
+  padding: 0 25px;
+  border: 1px solid $color-blue-primary;
+  border-radius: 999px;
+  color: $color-blue-primary;
+  background-color: $white;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  appearance: none;
+
+  &:hover {
+    color: $white;
+    background-color: $color-blue-primary;
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba($color-blue-primary, 0.25);
+    outline-offset: 5px;
+  }
+}
+
+/* Tablet */
 @media (max-width: 1199px) and (min-width: 768px) {
   .sfb-store-showcase {
     height: min(580px, 100vh);
@@ -1267,11 +1403,248 @@ button {
 
     &__content-inner {
       width: calc(100% - 64px);
+      transform: translateY(-20px);
     }
 
     &__information {
-      margin-top: 58px;
+      margin-top: 50px;
     }
+
+    &__more-button {
+      margin-top: 45px;
+    }
+  }
+
+  .sfb-store-locations {
+    &__inner {
+      width: calc(100% - 64px);
+      padding: 42px 0 58px;
+    }
+  }
+
+  .sfb-store-locations__table {
+    thead {
+      th {
+        padding: 14px 16px;
+        font-size: 13px;
+      }
+    }
+
+    tbody {
+      td {
+        padding: 16px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .sfb-store-showcase {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+
+    &__content {
+      order: 1;
+      min-height: 0;
+      height: auto;
+      padding: 54px 30px 48px;
+    }
+
+    &__content-inner {
+      width: 100%;
+      margin: 0;
+      transform: none;
+    }
+
+    &__title {
+      font-size: 29px;
+    }
+
+    &__lead {
+      margin-top: 13px;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    &__information {
+      margin-top: 48px;
+    }
+
+    &__store-name {
+      margin-bottom: 5px;
+      font-size: 21px;
+    }
+
+    &__address,
+    &__time {
+      font-size: 14px;
+    }
+
+    &__more-button {
+      min-width: 148px;
+      height: 40px;
+      margin-top: 38px;
+      padding: 0 20px;
+      font-size: 13px;
+    }
+
+    &__slider {
+      order: 2;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 0.78;
+      touch-action: pan-y;
+    }
+
+    &__pagination {
+      right: 18px;
+      bottom: 16px;
+    }
+
+    &__dot {
+      width: 8px;
+      height: 8px;
+
+      &.is-active {
+        width: 23px;
+      }
+    }
+  }
+
+  /* Store Locations */
+  .sfb-store-locations {
+    &__inner {
+      width: 100%;
+      padding: 30px 24px 52px;
+    }
+  }
+
+  .sfb-store-locations__table-wrap {
+    overflow: visible;
+    border-top: 0;
+    border-bottom: 0;
+  }
+
+  .sfb-store-locations__table {
+    display: block;
+    width: 100%;
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    tr {
+      display: block;
+      padding: 20px 18px;
+      border: 1px solid #e4e4e4;
+      border-radius: 6px;
+      background-color: #f8f8f8 !important;
+    }
+
+    td {
+      position: relative;
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr);
+      gap: 10px;
+      width: 100%;
+      padding: 7px 0 !important;
+      font-size: 14px !important;
+      line-height: 1.55;
+      text-align: left;
+
+      &::before {
+        content: attr(data-label);
+        color: $color-blue-primary;
+        font-weight: 700;
+      }
+
+      &[data-label="店名"] {
+        padding-top: 0 !important;
+        font-size: 16px !important;
+        font-weight: 700;
+
+        &::before {
+          font-size: 14px;
+        }
+      }
+
+      &[data-label="營業時間"] {
+        padding-bottom: 0 !important;
+      }
+
+      a {
+        min-width: 0;
+      }
+    }
+  }
+
+  .sfb-store-locations__map {
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .sfb-store-locations__footer {
+    padding-top: 32px;
+  }
+
+  .sfb-store-locations__close {
+    min-width: 148px;
+    height: 40px;
+    padding: 0 20px;
+    font-size: 13px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 374px) {
+  .sfb-store-showcase {
+    &__content {
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+
+    &__title {
+      font-size: 27px;
+    }
+  }
+
+  .sfb-store-locations {
+    &__inner {
+      padding-right: 18px;
+      padding-left: 18px;
+    }
+  }
+
+  .sfb-store-locations__table {
+    tr {
+      padding: 18px 15px;
+    }
+
+    td {
+      grid-template-columns: 66px minmax(0, 1fr);
+      gap: 8px;
+      font-size: 13px !important;
+    }
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .sfb-store-showcase__slide,
+  .sfb-store-showcase__dot,
+  .sfb-store-locations__collapse,
+  .sfb-store-locations__content {
+    transition: none;
   }
 }
 

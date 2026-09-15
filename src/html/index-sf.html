@@ -1312,144 +1312,154 @@
 
 
       <!-- 門市資訊 -->
-      <section class="sfb-store-showcase" aria-labelledby="sfb-store-showcase-title" data-sfb-store-showcase data-autoplay-delay="4000">
-        <!-- 左側固定文字 -->
-        <div class="sfb-store-showcase__content">
-          <div class="sfb-store-showcase__content-inner">
-            <h2
-              class="sfb-store-showcase__title"
-              id="sfb-store-showcase-title"
-            >
-              全新體驗門市
-            </h2>
+      <section class="sfb-store" id="store">
 
-            <p class="sfb-store-showcase__lead">
-              走進 Blue Label 的世界，親身感受舒適的定義。
-            </p>
+        <!-- Store Showcase -->
+        <div class="sfb-store-showcase" data-sfb-store-showcase data-autoplay-delay="4000">
 
-            <div class="sfb-store-showcase__information">
-              <h2 class="fs5">Blue Label旗艦店</h2>
-              <a
-                class="sfb-store-showcase__address"
-                href="https://www.google.com/maps/search/臺北市中山區復興南路一段52號"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                地址：臺北市中山區復興南路一段52號
-              </a>
+          <!-- 左側固定文字 -->
+          <div class="sfb-store-showcase__content">
+            <div class="sfb-store-showcase__content-inner">
+              <div class="sfb-store-showcase__intro">
+                <h2 class="sfb-store-showcase__title">全新體驗門市</h2>
+                <p class="sfb-store-showcase__lead">走進 BLUE LABEL 的世界，親身感受舒適的定義。</p>
+              </div>
 
-              <p class="sfb-store-showcase__time">
-                11:00&nbsp;-&nbsp;21:30
-              </p>
+              <div class="sfb-store-showcase__information">
+                <h3 class="sfb-store-showcase__store-name">BLUE LABEL旗艦店</h3>
+
+                <a class="sfb-store-showcase__address" href="https://www.google.com/maps/search/?api=1&query=%E8%87%BA%E5%8C%97%E5%B8%82%E4%B8%AD%E5%B1%B1%E5%8D%80%E5%BE%A9%E8%88%88%E5%8D%97%E8%B7%AF%E4%B8%80%E6%AE%B552%E8%99%9F" target="_blank" rel="noopener noreferrer">
+                  地址：臺北市中山區復興南路一段52號
+                </a>
+
+                <p class="sfb-store-showcase__time">11:00 - 21:30</p>
+              </div>
+
+              <button class="sfb-store-showcase__more-button" type="button" aria-expanded="false" aria-controls="sfb-store-locations" data-sfb-store-open>
+                <span>更多門市資訊</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 右側圖片輪播 -->
+          <div class="sfb-store-showcase__slider" data-sfb-store-slider>
+            <div class="sfb-store-showcase__track">
+              <figure class="sfb-store-showcase__slide is-active" data-sfb-store-slide>
+                <img src="../images/store/store01.jpg" alt="BLUE LABEL 門市外觀">
+              </figure>
+
+              <figure class="sfb-store-showcase__slide" data-sfb-store-slide>
+                <img src="../images/store/store02.jpg" alt="BLUE LABEL 門市空間">
+              </figure>
+
+              <figure class="sfb-store-showcase__slide" data-sfb-store-slide>
+                <img src="../images/store/store03.jpg" alt="BLUE LABEL 門市商品陳列">
+              </figure>
+            </div>
+
+            <div class="sfb-store-showcase__pagination" aria-label="門市照片切換">
+              <button class="sfb-store-showcase__dot is-active" type="button" aria-label="第 1 張門市照片" aria-current="true" data-sfb-store-dot="0"></button>
+              <button class="sfb-store-showcase__dot" type="button" aria-label="第 2 張門市照片" aria-current="false" data-sfb-store-dot="1"></button>
+              <button class="sfb-store-showcase__dot" type="button" aria-label="第 3 張門市照片" aria-current="false" data-sfb-store-dot="2"></button>
             </div>
           </div>
         </div>
 
-        <!-- 右側圖片輪播 -->
-        <div
-          class="sfb-store-showcase__slider"
-          data-sfb-store-slider
-        >
-          <div class="sfb-store-showcase__track">
-            <figure
-              class="sfb-store-showcase__slide is-active"
-              data-sfb-store-slide
-            >
-              <img
-                src="../images/store/store01.webp"
-                alt="Blue Label 門市外觀"
-              >
-            </figure>
+        <!-- 門市資訊 -->
+        <div class="sfb-store-locations" id="sfb-store-locations" aria-hidden="true" data-sfb-store-locations>
+          <div class="sfb-store-locations__collapse">
+            <div class="sfb-store-locations__content">
+              <div class="sfb-store-locations__inner">
 
-            <figure
-              class="sfb-store-showcase__slide"
-              data-sfb-store-slide
-            >
-              <img
-                src="../images/store/store02.webp"
-                alt="Blue Label 門市外觀"
-              >
-            </figure>
+                <div class="sfb-store-locations__table-wrap">
+                  <table class="sfb-store-locations__table">
+                    <thead>
+                      <tr>
+                        <th scope="col">區域</th>
+                        <th scope="col">店名</th>
+                        <th scope="col">地址</th>
+                      </tr>
+                    </thead>
 
-            <figure
-              class="sfb-store-showcase__slide"
-              data-sfb-store-slide
-            >
-              <img
-                src="../images/store/store03.webp"
-                alt="Blue Label 門市外觀"
-              >
-            </figure>
+                    <tbody>
+                      <tr>
+                        <td data-label="店名">北部</td>
+                        <td data-label="店名">東區門市</td>
+                        <td data-label="地址">
+                          <a class="sfb-store-locations__map" href="https://www.google.com/maps/search/?api=1&query=臺北市大安區忠孝東路四段218號" target="_blank" rel="noopener noreferrer">
+                          <span class="sfb-store-locations__map-icon"><img src="../images/icon-location.svg" alt=""></span>
+                          臺北市大安區忠孝東路四段218號
+                        </a>
+                        </td>
+                      </tr>
 
-            <figure
-              class="sfb-store-showcase__slide"
-              data-sfb-store-slide
-            >
-              <img
-                src="../images/store/store04.webp"
-                alt="Blue Label 門市外觀"
-              >
-            </figure>
+                      <tr>
+                        <td data-label="店名">北部</td>
+                        <td data-label="店名">東區門市</td>
+                        <td data-label="地址">
+                          <a class="sfb-store-locations__map" href="https://www.google.com/maps/search/?api=1&query=臺北市大安區忠孝東路四段218號" target="_blank" rel="noopener noreferrer">
+                          <span class="sfb-store-locations__map-icon"><img src="../images/icon-location.svg" alt=""></span>
+                          臺北市大安區忠孝東路四段218號
+                        </a>
+                        </td>
+                      </tr>
 
-            <figure
-              class="sfb-store-showcase__slide"
-              data-sfb-store-slide
-            >
-              <img
-                src="../images/store/store05.webp"
-                alt="Blue Label 門市外觀"
-              >
-            </figure>
+                      <tr>
+                        <td data-label="店名">北部</td>
+                        <td data-label="店名">東區門市</td>
+                        <td data-label="地址">
+                          <a class="sfb-store-locations__map" href="https://www.google.com/maps/search/?api=1&query=臺北市大安區忠孝東路四段218號" target="_blank" rel="noopener noreferrer">
+                          <span class="sfb-store-locations__map-icon"><img src="../images/icon-location.svg" alt=""></span>
+                          臺北市大安區忠孝東路四段218號
+                        </a>
+                        </td>
+                      </tr>
 
-            <figure
-              class="sfb-store-showcase__slide"
-              data-sfb-store-slide
-            >
-              <img
-                src="../images/store/store06.webp"
-                alt="Blue Label 商品展示區"
-              >
-            </figure>
+                      <tr>
+                        <td data-label="店名">北部</td>
+                        <td data-label="店名">東區門市</td>
+                        <td data-label="地址">
+                          <a class="sfb-store-locations__map" href="https://www.google.com/maps/search/?api=1&query=臺北市大安區忠孝東路四段218號" target="_blank" rel="noopener noreferrer">
+                          <span class="sfb-store-locations__map-icon"><img src="../images/icon-location.svg" alt=""></span>
+                          臺北市大安區忠孝東路四段218號
+                        </a>
+                        </td>
+                      </tr>
 
-            <figure
-              class="sfb-store-showcase__slide"
-              data-sfb-store-slide
-            >
-              <img
-                src="../images/store/store07.webp"
-                alt="Blue Label 商品展示區"
-              >
-            </figure>
-          </div>
+                      <tr>
+                        <td data-label="店名">北部</td>
+                        <td data-label="店名">東區門市</td>
+                        <td data-label="地址">
+                          <a class="sfb-store-locations__map" href="https://www.google.com/maps/search/?api=1&query=臺北市大安區忠孝東路四段218號" target="_blank" rel="noopener noreferrer">
+                          <span class="sfb-store-locations__map-icon"><img src="../images/icon-location.svg" alt=""></span>
+                          臺北市大安區忠孝東路四段218號
+                        </a>
+                        </td>
+                      </tr>
 
-          <!-- 輪播圓點 -->
-          <div
-            class="sfb-store-showcase__pagination"
-            aria-label="門市照片切換"
-          >
-            <button
-              class="sfb-store-showcase__dot is-active"
-              type="button"
-              aria-label="顯示第 1 張照片"
-              aria-current="true"
-              data-sfb-store-dot="0"
-            ></button>
+                      <tr>
+                        <td data-label="店名">北部</td>
+                        <td data-label="店名">東區門市</td>
+                        <td data-label="地址">
+                          <a class="sfb-store-locations__map" href="https://www.google.com/maps/search/?api=1&query=臺北市大安區忠孝東路四段218號" target="_blank" rel="noopener noreferrer">
+                          <span class="sfb-store-locations__map-icon"><img src="../images/icon-location.svg" alt=""></span>
+                          臺北市大安區忠孝東路四段218號
+                        </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
 
-            <button
-              class="sfb-store-showcase__dot"
-              type="button"
-              aria-label="顯示第 2 張照片"
-              aria-current="false"
-              data-sfb-store-dot="1"
-            ></button>
+                <!-- 收起門市資訊 -->
+                <div class="sfb-store-locations__footer">
+                  <button class="sfb-store-locations__close" type="button" data-sfb-store-close>
+                    <span>收起門市資訊</span>
+                  </button>
+                </div>
 
-            <button
-              class="sfb-store-showcase__dot"
-              type="button"
-              aria-label="顯示第 3 張照片"
-              aria-current="false"
-              data-sfb-store-dot="2"
-            ></button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

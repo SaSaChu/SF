@@ -1,3 +1,42 @@
+/* Store Locations */
+document.addEventListener("DOMContentLoaded", () => {
+  const store = document.querySelector(".sfb-store");
+  if (!store) return;
+
+  const locations = store.querySelector("[data-sfb-store-locations]");
+  const openButton = store.querySelector("[data-sfb-store-open]");
+  const closeButton = store.querySelector("[data-sfb-store-close]");
+
+  if (!locations || !openButton || !closeButton) return;
+
+  let isOpen = false;
+
+  const openLocations = () => {
+    if (isOpen) return;
+
+    isOpen = true;
+    locations.classList.add("is-open");
+    locations.setAttribute("aria-hidden", "false");
+    openButton.setAttribute("aria-expanded", "true");
+  };
+
+  const closeLocations = () => {
+    if (!isOpen) return;
+
+    isOpen = false;
+    locations.classList.remove("is-open");
+    locations.setAttribute("aria-hidden", "true");
+    openButton.setAttribute("aria-expanded", "false");
+
+    window.setTimeout(() => {
+      openButton.focus({ preventScroll: true });
+    }, 350);
+  };
+
+  openButton.addEventListener("click", openLocations);
+  closeButton.addEventListener("click", closeLocations);
+});
+
 
 /** banner設定 **/
 $(function () {
